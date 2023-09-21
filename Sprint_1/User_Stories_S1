@@ -1,10 +1,10 @@
 ## Here are the 4 user stories:
 
-	####Search for properties:
+	#### Search for properties:
 The user must be able to search for properties based on their preferences. As they'll have certain desired aspects in mind when it comes to their wanted house, the
 user will have the ability to filter their search based on, for example, 
-  ####Requests for visits for properties:
+        #### Requests for visits for properties:
 
-	####CRUD operations on properties:
+	#### CRUD operations on properties:
 
-	####CRUD operations on brokers:
+	#### CRUD operations on brokers:
