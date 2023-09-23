@@ -1,6 +1,5 @@
 # Real Estate Website Application
 
-## **Project Description**
 Our goal is to create a real-estate web application which’ll potentially be used by people wishing to buy or rent houses and brokers. As a team, we aim to have a responsive and efficient website as a final result. In order to achieve this, we’re going to have to properly design our website using front-end technologies while also developing a back end to manage the data behind the scenes.
 There are 4 different categories of people whoL'll be using our product.
 * House buyers that can search for houses based on filters, save houses as favorites, request to visit a house, search for brokers and use the mortgage calculator. Obviously, they'll be able to send offers to brokers selling the houses. They can also have filters associated to their accounts.
@@ -8,6 +7,7 @@ There are 4 different categories of people whoL'll be using our product.
 * Brokers can create new listings for houses they need to sell. They can also edit and delete those. Also, they can submit purchase offers to properties sold by other brokers, while alos being able to manage offers they receive. Furthermore, they can find homebuyers accounts which have matching preferences to their listings. Lastly, the brokers can also request to visit a house on behalf of their clients, while they can also reschedule or cancel visit offers they receive.
 * System Admnis have the ability to manage broker accounts. They're able to create, remove or even change the info associated to the accounts.
 
+## **Team Members and Roles**
 
 |              | Adam Chami        | Adrian Nico Salvado    | Mahmoud Mohamed      | Mickel Samuel       | Mustafa Aboabdullah  |
 |--------------|-------------------|------------------------|----------------------|---------------------|----------------------|
@@ -23,7 +23,7 @@ Let's take a deeper look into each individual's role:
 * **Mickel Samuel (Back-End Developer)**: Mickel will take care of the back-end, so everything relating to the database and servers used for the development of the project. The back-end will allow the creation and managment of accounts and what listings appear or are removed from the site. The technologies used for the back-end will be Node.JS and Django, which are JavaScript and Python frameworks.
 * **Mustafa Aboabdullah (Scrum Master)**: The Scrum master will be the one to organize all meetings that happen during the timeline of the project. He will ensure that the meetings happen whenever everyone is able, and he'll also take care of writing down the information that is mentioned throughout the meeting, taking notes of future goals, potential adjustments, and more.
 
-## **Technologies Used**:
+## **Project Approach and Technology**
 Here's a description of every technology that we'll eventually be using and why we've chosen it for the sake of our project.
 
 #### First, for front-end:
@@ -36,8 +36,9 @@ Here's a description of every technology that we'll eventually be using and why 
 
 * Django: Django is a web framework for Python, and it's very commonly used to make websites. Similarly to the others, it enhances efficiency as it provides many useful built-in components. Django, for example, simplifies the process of user authentification, which we'll have in our site as each user will be able to create an account which they can connect to with a password and email. It can however also be used for frontend, but we won't in the context of our project as the front-end frameworks we currently have are good enough to complete it. The Django REST frameowrk is used to connect the back-end to the front-end React code for example using API endpoints, for which React will send HTTP requests in order to access.
 
-
+<!--
 ## List of questions:
 * How do we divide our files for the gitHub
 * The meeting minutes, how many times should we ideally meet a week
 * Is the info we put enough
+-->
