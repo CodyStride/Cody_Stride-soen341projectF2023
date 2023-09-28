@@ -17,6 +17,13 @@ As a user, I want to be able to search for properties and be able to filter my s
 - [ ] Documentation is present for every new component
 - [ ] Unit and UI tests are implemented for every component and function
 
+### Task Breakdown
+- [ ] Create a database of property characteristics
+- [ ] Create search page
+- [ ] Create advance search option
+- [ ] Implement database search for qualifying properties
+- [ ] Create search result list component
+- [ ] 
 
 <!-- Requests visits for properties: -->
 ## User story 2
@@ -34,6 +41,11 @@ As a user, specifically a house-buyer, renter, or even broker willing to request
 - [ ] Documentation is present for every new component
 - [ ] Unit and UI tests are implemented for every component and function
 
+### Task Breakdown
+- [ ] Implement database of availability of house visits
+- [ ] Create page of visit request
+- [ ] 
+- [ ] 
 
 <!-- CRUD operations on properties: -->
 ## User story 3
@@ -41,7 +53,7 @@ As a user, specifically a house-buyer, renter, or even broker willing to request
 As a user, specifically a broker, I want to be able to add and remove properties that I wish to sell. I also wish to be able to submit an offer for buying a property on behalf of my client.
 
 ### User Acceptance Flow
-1. User selects the property to submit the offer from the list of properties
+1. User selects the property to submit the offer to from the search result of properties 
 2. User is shown the description of the property
 3. User presses the "Submit offer" button
 4. User fills in the information of the offer form
@@ -52,6 +64,13 @@ As a user, specifically a broker, I want to be able to add and remove properties
 - [ ] User acceptance flow is respected
 - [ ] Documentation is present for every new component
 - [ ] Unit and UI tests are implemented for every component and function
+
+### Task Breakdown
+- [ ] Create database for property status
+- [ ] Create description of property page
+- [ ] Create offer form page
+- [ ] Implement adding/removing properties
+- [ ] Implement submitting offer to database
 
 <!-- CRUD operations on properties: -->
 ## User story 3 (alt version)
@@ -72,7 +91,7 @@ As a user, specifically a broker, I want to be able to add and remove properties
 - [ ] User acceptance flow is respected
 - [ ] Documentation is present for every new component
 - [ ] Unit and UI tests are implemented for every component and function
-
+`
 
 <!-- CRUD operations on brokers -->
 ## User story 4
@@ -96,4 +115,3 @@ As a user, specifically a system administrator, I should be able to add and remo
 - [ ] User acceptance flow is respected
 - [ ] Documentation is present for every new component
 - [ ] Unit and UI tests are implemented for every component and function
-
