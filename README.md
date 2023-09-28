@@ -23,18 +23,40 @@ Let's take a deeper look into each individual's role:
 * **Mickel Samuel (Back-End Developer)**: Mickel will take care of the back-end, so everything relating to the database and servers used for the development of the project. The back-end will allow the creation and managment of accounts and what listings appear or are removed from the site. The technologies used for the back-end will be Node.JS and Django, which are JavaScript and Python frameworks.
 * **Mustafa Aboabdullah (Scrum Master)**: The Scrum master will be the one to organize all meetings that happen during the timeline of the project. He will ensure that the meetings happen whenever everyone is able, and he will also take care of writing down the information that is mentioned throughout the meeting, taking notes of future goals, potential adjustments, and more.
 
+
+
 ## **Project Approach and Technology**
+
+### Project Approach:
+As of now, our team has agreed on an idea on how the application will be built in general. We've organized the main components that we wish to produce and that'll
+ultimately form our complete site. Here's a list of the current functionalities or components that we have in mind:
+
+1. <ins>Initial page:</ins> The first page that appears on the user's screen will be quite simple, as its objective will be to determine what the user wishes to use the site for. There'll be 3 different options for the user to click on: a) I am a buyer/renter   b) I am a broker    c) I am a system administrator. 
+2. <ins>Login Page:</ins> On our site, you'll be able to create an account and connect to it, so we'll have a login system. Once the user clicks on one of the three buttons, he'll be directed to a login page. Its format'll be the same for all types of accounts.
+3. <ins>Main Pages:</ins> For each type of account, the site's design/format will be relatively similar, however the functionality will be different. For brokers, buyers and renters, the houses will be displayed in the same way in the home page, but the commands that'll let the user will be able to do will differ by account. Here's a general idea of what each user will be able to do. Note that this is a summarized description:
+- Buyers/renters will be able to view a house or request a visit. Buyers will also be able to use a mortgage calculator
+- Brokers will be able to view the houses they're selling or the ones other brokers are selling. For the ones they're selling, they can add or remove them            whenever, thus removing them from the database. But, they could also throw in some offers to the other broker's positngs.
+- System administrators will have a main screen with the list of brokers. They could go to their account page and see the postings they've put online.  
+  Furthermore, they'll be able to remove their accounts or even add new accounts if desired. That'd be removing the account from the database completely.
+4. <ins>Account pages:</ins> When clicking on a user, we'll be able to see his account. Buyers or renters won't have too much on theirs, only their name and a description if they wish. They could also choose an image for their profile. Same thing for system administrators. However, for brokers, they'll have the same aspects, but anyone'll be able to see what houses they've posted for selling.
+
 Here's a description of every technology that we will eventually be using and why we've chosen it for the sake of our project.
 
 #### First, for front-end:
-* React: React is a widely used JavaScript framework. Many sites are built using React as it simplifies the process of creating user interfaces while it also helps in developing components which would usually be way harder to implement with JavaScript alone. Furthermore, the great thing about React is that it allows the programmer to easily reuse these previously created components. Overall, this frameworks enhances efficiency and simplifies development of websites. For example, React can be used for autocompletion in input fields.
+* <ins>React:</ins> React is a widely used JavaScript framework. Many sites are built using React as it simplifies the process of creating user interfaces while it also helps in developing components which would usually be way harder to implement with JavaScript alone. Furthermore, the great thing about React is that it allows the programmer to easily reuse these previously created components. Overall, this frameworks enhances efficiency and simplifies development of websites. For example, React can be used for autocompletion in input fields.
+A lot of our members know JavaSript, and one of the temamates already had knowledge on React while two of us were currently learning about this framework, making
+it the perfect tool to use for the front-end of our website
 
-* Bootstrap: Bootstrap is a CSS framework that heavily simplifies the design process of the website. In fact, Bootstrap provides us with many predefined CSS classes that can simply be applied to our site's elements which we don't have to code from beginning to end. This allows us to more easily style our website all the while keeping it responsive and efficient. As our goal in this team is to deliver the best possible product as fast as we're able, this framework will be of great help to us. As an example, with Bootstrap, we can easily make a navigation bar as compared to making it from start to finish with CSS.
+* <ins>Bootstrap:</ins> Bootstrap is a CSS framework that heavily simplifies the design process of the website. In fact, Bootstrap provides us with many predefined CSS classes that can simply be applied to our site's elements which we don't have to code from beginning to end. This allows us to more easily style our website all the while keeping it responsive and efficient. As our goal in this team is to deliver the best possible product as fast as we're able, this framework will be of great help to us. As an example, with Bootstrap, we can easily make a navigation bar as compared to making it from start to finish with CSS.
+As all of us on the team know CSS, we agreed that we would learn about Bootstrap since it'd enhance the design all the while being easier to use than CSS.
 
 #### Second, for back-end:
-* NodeJS: This framework allows us to run JavaScript on the server side, which we don't usually do when we normally use JavaScript. This is very importnat as this makes it possible to create a full-stack application, since we can work on back-end aspects using it. NodeJS will ease the communication between the server and the client, so it's often used.
+* <ins>NodeJS:</ins> This framework allows us to run JavaScript on the server side, which we don't usually do when we normally use JavaScript. This is very importnat as this makes it possible to create a full-stack application, since we can work on back-end aspects using it. NodeJS will ease the communication between the server and the client, so it's often used.
+Furthermore, a lot of us in the team were willing to learn this back-end JavaScript framework as we had previous experience with JavaScript and found it
+to be potentially useful to know.
 
-* Django: Django is a web framework for Python, and it's very commonly used to make websites. Similarly to the others, it enhances efficiency as it provides many useful built-in components. Django, for example, simplifies the process of user authentification, which we will have in our site as each user will be able to create an account which they can connect to with a password and email. It can however also be used for frontend, but we won't in the context of our project as the front-end frameworks we currently have are good enough to complete it. The Django REST frameowrk is used to connect the back-end to the front-end React code for example using API endpoints, for which React will send HTTP requests in order to access.
+* <ins>Django:</ins> Django is a web framework for Python, and it's very commonly used to make websites. Similarly to the others, it enhances efficiency as it provides many useful built-in components. Django, for example, simplifies the process of user authentification, which we will have in our site as each user will be able to create an account which they can connect to with a password and email. It can however also be used for frontend, but we won't in the context of our project as the front-end frameworks we currently have are good enough to complete it. The Django REST frameowrk is used to connect the back-end to the front-end React code for example using API endpoints, for which React will send HTTP requests in order to access.
+Many of us also have knowledge in Python, and two of the team's members were currently learning this framework, so we also found it to be a good tool to use.
 
 <!--
 ## List of questions:
