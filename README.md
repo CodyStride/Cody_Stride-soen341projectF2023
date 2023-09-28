@@ -7,7 +7,7 @@ There are 4 different categories of people who will be using our product.
 * Brokers can create new listings for houses they need to sell. They can also edit and delete those. Also, they can submit purchase offers to properties sold by other brokers, while alos being able to manage offers they receive. Furthermore, they can find homebuyers accounts which have matching preferences to their listings. Lastly, the brokers can also request to visit a house on behalf of their clients, while they can also reschedule or cancel visit offers they receive.
 * System Admnis have the ability to manage broker accounts. They're able to create, remove or even change the info associated to the accounts.
 
-## **Team Members and Roles**
+## **Team Members, Roles and Background**
 
 |              | Adam Chami        | Adrian Nico Salvado    | Mahmoud Mohamed      | Mickel Samuel       | Mustafa Aboabdullah  |
 |--------------|-------------------|------------------------|----------------------|---------------------|----------------------|
@@ -15,7 +15,7 @@ There are 4 different categories of people who will be using our product.
 | Role         | Project Manager   | Full-Stack Developer   | Front-End Developer  | Back-End Developer  | Scrum Master         |
 
 
-Let's take a deeper look into each individual's role:
+Let's take a deeper look into each individual's role and background:
 
 * **Adam Chami (Project Manager)**: As the project manager, Adam's goal will be to decide the team's objectives and ensure that the development of the project is properly advancing. The project manager will collaborate with everyone on the team in order to help solve any arising issues and will assign user points to each user story based on the customer's requirements.
 * **Adrian Nico Salvado (Full-Stack Developer)**: The full stack developer's job is to work on both the front end and back end as he has knowledge of how both parts of the site work. Adrian will ensure that both the front-end and back-end are well connected so that the complete website works properly. He will have to collaborate with the front-end and back-end developers in order to assist them in the aspects they're working on while also learning and applying new technologies that might come in play later on in the project.
