@@ -20,7 +20,7 @@ As a user specifically a broker, I want to submit an offer for buying a property
 
 ### User Acceptance Flow
 1. User selects the property to submit the offer from the list of properties
-2. User enters the description of the property
+2. User is shown the description of the property
 3. User presses the "Submit offer" button
 4. User fills in the information of the offer form
 5. User submits offer form
