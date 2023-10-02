@@ -21,7 +21,7 @@ As a user, I want to be able to search for properties and be able to filter my s
 
 ### Task Breakdown
 - [ ] Create a database of property characteristics
-- [ ] Create search page
+- [ ] Create search feature on main page
 - [ ] Create advanced search option
 - [ ] Implement database search for qualifying properties
 - [ ] Create search result list component
@@ -43,31 +43,10 @@ As a user, specifically a house-buyer, renter, or even broker willing to request
 - [ ] Unit and UI tests are implemented for every component and function
 
 ### Task Breakdown
+- [ ] Create visit request feature
+- [ ] Implement available options feature
 - [ ] Implement database for current requests
 - [ ] Implement database of availability of house visits
-- [ ] Create page of visit request
-
-<!-- Brokers submitting offers to properties: -->
-## User story
-### User Description
-As a user, specifically a broker, I want to be able to submit an offer for buying a property on behalf of my client.
-
-### User Acceptance Flow
-1. User selects the property to submit the offer to from the search result of properties 
-2. User is shown the description of the property
-3. User presses the "Submit offer" button
-4. User fills in the information of the offer form
-5. User submits offer form
-6. User gets a confirmation that the offer was submitted
-
-### Acceptance Criteria
-- [ ] User acceptance flow is respected
-- [ ] Documentation is present for every new component
-- [ ] Unit and UI tests are implemented for every component and function
-
-### Task Breakdown
-- [ ] Create offer form page
-- [ ] Implement submitting offer to database
 
 <!-- CRUD operations on properties: -->
 ## User story 3
@@ -90,7 +69,7 @@ As a user, specifically a broker, I want to be able to add and remove properties
 - [ ] Unit and UI tests are implemented for every component and function
 
 ### Task Breakdown
-- [ ] Implement properties on the main search page
+- [ ] Implement properties on the main page
 - [ ] Create database for property status
 - [ ] Create description of property page
 - [ ] Implement adding/removing properties
@@ -98,10 +77,6 @@ As a user, specifically a broker, I want to be able to add and remove properties
 
 <!-- CRUD operations on brokers -->
 ## User story 4
-This type of user, the system administrators specifically, will be able to perform CRUD operations on brokers. They'll be able to manage broker accounts by deleting them, or 
-even have the ability to create some brokers accounts. This user could also manage the information associated with the accounts of the different brokers. In order to do this, 
-the user must have a page where he can view a full list of the broker's different accounts.
-
 ### User Description
 As a user, specifically a system administrator, I should be able to add and remove broker accounts and manage information associated with the accounts.
 
@@ -121,6 +96,7 @@ As a user, specifically a system administrator, I should be able to add and remo
 
 ### Task Breakdown
 - [ ] Create a database of brokers accounts
-- [ ] Create broker search page
 - [ ] Create brokers list page
+- [ ] Create search feature for finding brokers
 - [ ] Implement adding/removing broker accounts
+      
