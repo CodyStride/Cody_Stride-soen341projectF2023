@@ -20,10 +20,9 @@ As a user, I want to be able to search for properties and be able to filter my s
 ### Task Breakdown
 - [ ] Create a database of property characteristics
 - [ ] Create search page
-- [ ] Create advance search option
+- [ ] Create advanced search option
 - [ ] Implement database search for qualifying properties
 - [ ] Create search result list component
-- [ ] 
 
 <!-- Requests visits for properties: -->
 ## User story 2
@@ -42,15 +41,14 @@ As a user, specifically a house-buyer, renter, or even broker willing to request
 - [ ] Unit and UI tests are implemented for every component and function
 
 ### Task Breakdown
+- [ ] Implement database for current requests
 - [ ] Implement database of availability of house visits
 - [ ] Create page of visit request
-- [ ] 
-- [ ] 
 
-<!-- CRUD operations on properties: -->
-## User story 3
+<!-- Brokers submitting offers to properties: -->
+## User story
 ### User Description
-As a user, specifically a broker, I want to be able to add and remove properties that I wish to sell. I also wish to be able to submit an offer for buying a property on behalf of my client.
+As a user, specifically a broker, I want to be able to submit an offer for buying a property on behalf of my client.
 
 ### User Acceptance Flow
 1. User selects the property to submit the offer to from the search result of properties 
@@ -66,14 +64,11 @@ As a user, specifically a broker, I want to be able to add and remove properties
 - [ ] Unit and UI tests are implemented for every component and function
 
 ### Task Breakdown
-- [ ] Create database for property status
-- [ ] Create description of property page
 - [ ] Create offer form page
-- [ ] Implement adding/removing properties
 - [ ] Implement submitting offer to database
 
 <!-- CRUD operations on properties: -->
-## User story 3 (alt version)
+## User story 3
 ### User Description
 As a user, specifically a broker, I want to be able to add and remove properties that I wish to sell.
 
@@ -91,7 +86,13 @@ As a user, specifically a broker, I want to be able to add and remove properties
 - [ ] User acceptance flow is respected
 - [ ] Documentation is present for every new component
 - [ ] Unit and UI tests are implemented for every component and function
-`
+
+### Task Breakdown
+- [ ] Implement properties on the main search page
+- [ ] Create database for property status
+- [ ] Create description of property page
+- [ ] Implement adding/removing properties
+
 
 <!-- CRUD operations on brokers -->
 ## User story 4
