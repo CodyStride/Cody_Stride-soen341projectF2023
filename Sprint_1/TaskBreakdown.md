@@ -18,7 +18,7 @@ As a user, I want to be able to search for properties and be able to filter my s
 As a user, specifically a house-buyer, renter, or even broker willing to request a visit for his client, I want to be able to request a visit to a specific house posted on the site. I also need to be able to chose a specific and available time that is convenient for me.
 
 ### Task Breakdown
-- [ ] Create visit request feauture
+- [ ] Create visit request feature
 - [ ] Implement available options feature
 - [ ] Implement database for current requests
 - [ ] Implement database of availability of house visits
@@ -37,7 +37,8 @@ As a user, specifically a broker, I want to be able to add and remove properties
 
 <!-- CRUD operations on brokers -->
 ## User story 4
-This type of user, the system administrators specifically, will be able to perform CRUD operations on brokers. They'll be able to manage broker accounts by deleting them, or even have the ability to create some brokers accounts. This user could also manage the information associated with the accounts of the different brokers. In order to do this, the user must have a page where he can view a full list of the broker's different accounts.
+### User Description
+As a user, specifically a system administrator, I should be able to add and remove broker accounts and manage information associated with the accounts.
 
 ### Task Breakdown
 - [ ] Create a database of brokers accounts
