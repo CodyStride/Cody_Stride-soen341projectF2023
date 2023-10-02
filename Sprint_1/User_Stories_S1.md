@@ -116,3 +116,9 @@ As a user, specifically a system administrator, I should be able to add and remo
 - [ ] User acceptance flow is respected
 - [ ] Documentation is present for every new component
 - [ ] Unit and UI tests are implemented for every component and function
+
+### Task Breakdown
+- [ ] Create a database of brokers accounts
+- [ ] Create broker search page
+- [ ] Create brokers list page
+- [ ] Implement adding/removing broker accounts
