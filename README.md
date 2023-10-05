@@ -9,10 +9,13 @@ There are 4 different categories of people who will be using our product.
 
 ## **Team Members, Roles and Background**
 
-|              | Adam Chami        | Adrian Nico Salvado    | Mahmoud Mohamed      | Mickel Samuel       | Mustafa Aboabdullah  |
-|--------------|-------------------|------------------------|----------------------|---------------------|----------------------|
-| Student ID   | 40248165          | 40246591               | 40163777             | 40246743            | 40199998             |
-| Role         | Team Leader       | QA                     | Design Master        | Scrum Master        | Database Manager     |
+| Name               | Student ID | Role           |
+|--------------------|------------|----------------|
+| Adam Chami         | 40248165   | Team Leader    |
+| Adrian Nico Salvado| 40246591   | QA             |
+| Mahmoud Mohamed    | 40163777   | Design Master  |
+| Mickel Samuel      | 40246743   | Scrum Master   |
+| Mustafa Aboabdullah| 40199998   | Database Manager |
 
 
 Let's take a deeper look into each individual's role and background:
