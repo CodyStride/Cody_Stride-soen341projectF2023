@@ -1,9 +1,12 @@
-|              | Adam Chami        | Adrian Nico Salvado    | Mahmoud Mohamed         | Mickel Samuel       | Mustafa Aboabdullah  |
-|--------------|-------------------|------------------------|-------------------------|---------------------|----------------------|
-| Student ID   | 40248165          | 40246591               | 40163777                | 40246743            | 40199998             |
-| Role         | Project Manager   | QA Engineer            | Design master           | Scrum Master        | Database Manager     |
-| Hours        | 5:00              | 5:10                   | 4:45                    | 4:30                | 4:30                 |
-| Tasks        | README File/Wikis | User Stories           | Task Breakdown/Approach | Meeting Minutes     | Contribution Log     |
+# Contribution Log - Sprint 1
+
+|              | Student ID | Role             | Hours | Tasks                 |
+|--------------|------------|------------------|-------|-----------------------|
+| Adam Chami   | 40248165   | Project Manager | 5:00  | README File/Wikis     |
+| Adrian Nico Salvado | 40246591 | QA Engineer | 5:10  | User Stories          |
+| Mahmoud Mohamed | 40163777 | Design Master  | 4:45  | Task Breakdown/Approach|
+| Mickel Samuel | 40246743   | Scrum Master   | 4:30  | Meeting Minutes       |
+| Mustafa Aboabdullah | 40199998 | Database Manager | 4:30  | Contribution Log  |
 
 Here's a brief overview on what each of us worked on throughout this sprint 1:
 
