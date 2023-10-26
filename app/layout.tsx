@@ -27,6 +27,9 @@ export default function RootLayout({ children }: { children: any }) {
             <AppShell.Header>
               <Group h="100%" px="md">
                 <Burger hiddenFrom="sm" size="sm" />
+                <Button variant="outline" size="lg" component="a" href="/">
+                  Home
+                </Button>
                 <Button variant="outline" size="lg" component="a" href="/search">
                   View Listings
                 </Button>
