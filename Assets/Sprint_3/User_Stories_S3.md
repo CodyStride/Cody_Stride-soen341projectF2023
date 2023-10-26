@@ -1,3 +1,27 @@
+<!-- Search for Brokers -->
+## User story 1
+### User Description
+As a user, I want to be able to search for specific brokers to find information about them, while also being able to view what properties these brokers have sold.
+
+### User Acceptance Flow
+1. User opens the brokers page
+2. User searches for the broker based on criteria
+3. User is shown a list of brokers that correspond to his search
+4. User clicks on a specific broker
+5. User is able to see the different listings that this broekr has posted
+
+### Acceptance Criteria
+- [ ] User acceptance flow is respected
+- [ ] Documentation is present for every new component
+- [ ] Unit and UI tests are implemented for every component and function
+
+### Task Breakdown
+- [ ] Create broker search property
+- [ ] Implement an advanced search functionality
+- [ ] Create page displaying specific brokers' posted listings
+- [ ] Apply database components for brokers' listings
+
+
 <!-- Brokers submitting offers to properties: -->
 ## User story 2
 ### User Description
@@ -19,3 +43,24 @@ As a user, specifically a broker, I want to be able to submit an offer for buyin
 ### Task Breakdown
 - [ ] Create offer form page
 - [ ] Implement submitting offer to database
+
+<!-- Offers Management (View, accept, reject -->
+
+## User story 3
+### User Description
+As a user, specifically a broker, I want to be able to see different offers to my properties on sale, while being able to accept and reject these offers.
+
+### User Acceptance Flow
+1. User selects his property 
+2. User is shown the offers to that property from both the buyers and other brokers
+3. User presses the "Accept offer" or "Reject Offer" button based on what he wants
+6. User gets a confirmation that the offer was accepted/rejected
+
+### Acceptance Criteria
+- [ ] User acceptance flow is respected
+- [ ] Documentation is present for every new component
+- [ ] Unit and UI tests are implemented for every component and function
+
+### Task Breakdown
+- [ ] Create offer viewing page
+- [ ] Create accept and reject functionalities
