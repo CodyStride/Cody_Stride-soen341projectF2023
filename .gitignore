@@ -36,5 +36,6 @@ next-env.d.ts
 
 #data
 pb_data
-
 pb_migrations
+pocketbase
+pocketbase.exe
