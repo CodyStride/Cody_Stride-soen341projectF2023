@@ -37,6 +37,9 @@ export default function RootLayout({ children }: { children: any }) {
                 <Button variant="outline" size="lg" component="a" href="/dashboard">
                   Brokers
                 </Button>
+                <Button variant="outline" size="lg" component="a" href="/broker">
+                  Properties
+                </Button>
               </Group>
             </AppShell.Header>
 
