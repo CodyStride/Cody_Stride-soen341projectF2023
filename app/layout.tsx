@@ -5,6 +5,7 @@ import React from "react";
 import { MantineProvider, ColorSchemeScript, Button, Group } from "@mantine/core";
 import { AppShell, Burger } from '@mantine/core';
 import { theme } from "../theme";
+import { BiHomeAlt } from "react-icons/bi"
 
 export default function RootLayout({ children }: { children: any }) {
   return (
@@ -28,10 +29,13 @@ export default function RootLayout({ children }: { children: any }) {
               <Group h="100%" px="md">
                 <Burger hiddenFrom="sm" size="sm" />
                 <Button variant="outline" size="lg" component="a" href="/">
-                  Home
+                  <BiHomeAlt />
                 </Button>
                 <Button variant="outline" size="lg" component="a" href="/search">
                   View Listings
+                </Button>
+                <Button variant="outline" size="lg" component="a" href="/dashboard">
+                  Brokers
                 </Button>
               </Group>
             </AppShell.Header>
