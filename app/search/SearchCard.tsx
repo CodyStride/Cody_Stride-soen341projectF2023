@@ -1,7 +1,7 @@
 'use client';
 
 import { Badge, Button, Card, Divider, Flex, Group, Image, Space, Text } from "@mantine/core";
-import { PiBed, PiToilet } from "react-icons/pi"
+import { PiBed, PiToilet, PiGlobe } from "react-icons/pi"
 
 export interface SearchCardProps {
   id: number
@@ -16,13 +16,13 @@ export interface SearchCardProps {
 
 const defaultPage = "https://images.unsplash.com/photo-1527004013197-933c4bb611b3?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=720&q=80"
 
-export function SearchCard({ price, description, image, bedrooms, bathrooms }: SearchCardProps) {
+export function SearchCard({ price, description, image, bedrooms, bathrooms, location }: SearchCardProps) {
   const formattedPrice = price.toLocaleString('en-US', {
     style: 'currency',
     currency: 'CAD',
     maximumFractionDigits: 0,
   });
-  
+
   return (
     <Card shadow="sm" padding="lg" radius="md" withBorder>
       <Card.Section>
@@ -60,6 +60,11 @@ export function SearchCard({ price, description, image, bedrooms, bathrooms }: S
         </Text>
       </div>
 
+      <Text size="sm" c="dimmed">
+        <PiGlobe />
+        {location || '??'}
+      </Text>
+
       <Group>
         <Button variant="light" color="blue" fullWidth mt="md" radius="md">
           Request Visit
@@ -70,4 +75,4 @@ export function SearchCard({ price, description, image, bedrooms, bathrooms }: S
       </Group>
     </Card>
   )
-} 
+}

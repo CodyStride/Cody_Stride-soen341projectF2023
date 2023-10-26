@@ -20,10 +20,8 @@ export function SearchInput() {
 
   const startSearch = useCallback(() => {
     const params = new URLSearchParams(window.location.search)
-    
-    if (propertyType !== "Any") {
-      params.set("type", propertyType);
-    }
+
+    params.set("type", propertyType);
 
     params.set("min_price", minPrice.toString());
     params.set("max_price", maxPrice.toString());

@@ -2,7 +2,6 @@ import { Space } from "@mantine/core"
 import { SearchInput } from "./SearchInput"
 import PocketBase from 'pocketbase'
 import { SearchList } from "./SearchList"
-import { useRouter } from "next/router"
 
 export interface ISearchParams {
   type?: string
@@ -24,7 +23,9 @@ async function getEntries({ type, min_price, max_price, bedrooms, bathrooms }: I
   let filter = ''
 
   if (type) {
-    filter += `type = "${type}"`;
+    if (type != 'Any') {
+      filter += `type = "${type}"`;
+    }
   }
 
   if (min_price) {
