@@ -16,11 +16,10 @@ As a user, I want to be able to search for specific brokers to find information 
 - [ ] Unit and UI tests are implemented for every component and function
 
 ### Task Breakdown
-- [ ] Create broker search property
+- [ ] Create broker search property page
 - [ ] Implement an advanced search functionality
 - [ ] Create page displaying specific brokers' posted listings
 - [ ] Apply database components for brokers' listings
-
 
 <!-- Brokers submitting offers to properties: -->
 ## User story 2
@@ -28,12 +27,13 @@ As a user, I want to be able to search for specific brokers to find information 
 As a user, specifically a broker, I want to be able to submit an offer for buying a property on behalf of my client.
 
 ### User Acceptance Flow
-1. User selects the property to submit the offer to from the search result of properties 
-2. User is shown the description of the property
-3. User presses the "Submit offer" button
-4. User fills in the information of the offer form
-5. User submits offer form
-6. User gets a confirmation that the offer was submitted
+1. User searches for a property
+3. User selects the property to submit the offer to from search result list
+4. User is shown the description of the property
+5. User presses the "Submit offer" button
+6. User fills in the information of the offer form
+7. User submits offer form
+8. User gets a confirmation that the offer was submitted
 
 ### Acceptance Criteria
 - [ ] User acceptance flow is respected
@@ -42,7 +42,9 @@ As a user, specifically a broker, I want to be able to submit an offer for buyin
 
 ### Task Breakdown
 - [ ] Create offer form page
-- [ ] Implement submitting offer to database
+- [ ] Implement offer submission functionality that creates an offer record in the database
+- [ ] Implement a notification confirmation that the offer was submitted
+- [ ] Implement a database that stores the offers on the properties
 
 <!-- Offers Management (View, accept, reject -->
 
@@ -51,9 +53,10 @@ As a user, specifically a broker, I want to be able to submit an offer for buyin
 As a user, specifically a broker, I want to be able to see different offers to my properties on sale, while being able to accept and reject these offers.
 
 ### User Acceptance Flow
-1. User selects his property 
-2. User is shown the offers to that property from both the buyers and other brokers
-3. User presses the "Accept offer" or "Reject Offer" button based on what he wants
+1. User enters their dashboard
+2. User selects his property
+3. User is shown the offers to that property from both the buyers and other brokers
+4. User presses the "Accept offer" or "Reject Offer" button based on what he wants
 6. User gets a confirmation that the offer was accepted/rejected
 
 ### Acceptance Criteria
@@ -64,3 +67,6 @@ As a user, specifically a broker, I want to be able to see different offers to m
 ### Task Breakdown
 - [ ] Create offer viewing page
 - [ ] Create accept and reject functionalities
+- [ ] Implement a database that stores the offers on the properties
+- [ ] Implement a notification confirmation from accepting/rejecting offer
+- [ ] Create a list component that shows the current offers on the broker's properties
