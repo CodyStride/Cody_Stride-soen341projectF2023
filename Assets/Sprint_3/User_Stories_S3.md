@@ -69,4 +69,3 @@ As a user, specifically a broker, I want to be able to see different offers to m
 - [ ] Create accept and reject functionalities
 - [ ] Implement a database that stores the offers on the properties
 - [ ] Implement a notification confirmation from accepting/rejecting offer
-- [ ] Create a list component that shows the current offers on the broker's properties
