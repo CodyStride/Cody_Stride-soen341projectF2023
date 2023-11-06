@@ -2,7 +2,7 @@
 
 import "@mantine/core/styles.css";
 import React from "react";
-import { MantineProvider, ColorSchemeScript, Button, Group, Notification } from "@mantine/core";
+import { MantineProvider, ColorSchemeScript, Button, Group } from "@mantine/core";
 import { AppShell, Burger } from '@mantine/core';
 import { theme } from "../theme";
 import { BiHomeAlt } from "react-icons/bi"
