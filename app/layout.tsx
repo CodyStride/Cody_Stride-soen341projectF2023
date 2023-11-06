@@ -2,11 +2,10 @@
 
 import "@mantine/core/styles.css";
 import React from "react";
-import { MantineProvider, ColorSchemeScript, Button, Group } from "@mantine/core";
+import { MantineProvider, ColorSchemeScript, Button, Group, Notification } from "@mantine/core";
 import { AppShell, Burger } from '@mantine/core';
 import { theme } from "../theme";
 import { BiHomeAlt } from "react-icons/bi"
-import { Notifications } from "@mantine/notifications";
 
 import '@mantine/notifications/styles.css'
 
@@ -23,7 +22,7 @@ export default function RootLayout({ children }: { children: any }) {
       </head>
       <body>
         <MantineProvider theme={theme}>
-          <Notifications />
+          <Notification />
           <AppShell
             header={{ height: 60 }}
             // navbar={{ width: 300, breakpoint: 'sm' }}
