@@ -1,13 +1,14 @@
 'use client';
 
-import { useDisclosure } from '@mantine/hooks';
-import { Modal, Button, Text, TextInput, NumberInput } from '@mantine/core';
 import { useState } from 'react';
+import { useDisclosure } from '@mantine/hooks';
+import { Modal, Button, TextInput, NumberInput, LoadingOverlay } from '@mantine/core';
+import { notifications } from '@mantine/notifications';
 import { useRouter } from 'next/navigation';
 
-export function CreateProperty() {
-  const [opened, { open, close }] = useDisclosure(false);
-  const router = useRouter();
+export function CreatePropertyModal() {
+  const [opened, { open: openModal, close: closeModal }] = useDisclosure(false);
+  const [visible, { open: load, close: ready }] = useDisclosure(false);
 
   // State variables for form fields
   const [propertyData, setPropertyData] = useState({
@@ -26,10 +27,14 @@ export function CreateProperty() {
     setPropertyData({ ...propertyData, [key]: value });
   };
 
+  // Refresh page
+  const router = useRouter();
+
   const handleFormSubmit = async (e: any) => {
     e.preventDefault();
 
     console.log('submitting')
+    load() // Loading screen
 
     try {
       const res = await fetch(`http://localhost:3000/broker/api`, {
@@ -44,8 +49,15 @@ export function CreateProperty() {
         throw new Error("Failed to update topic");
       }
 
+      ready() // Stop loading screen
+      closeModal()
       router.refresh();
-      router.push("/broker");
+
+      notifications.show({
+        title: 'Property Sucessfully Added',
+        message: 'Hey there, your code is awesome! 🤥',
+        color: 'green',
+      })
     } catch (error) {
       console.log(error);
     }
@@ -53,7 +65,8 @@ export function CreateProperty() {
 
   return (
     <>
-      <Modal opened={opened} onClose={close} title="Add Property">
+      <Modal opened={opened} onClose={closeModal} title="Add Property">
+        <LoadingOverlay visible={visible} zIndex={1000} overlayProps={{ radius: "sm", blur: 2 }} />
         {/* Form content */}
         <TextInput
           label="Property Type"
@@ -99,7 +112,7 @@ export function CreateProperty() {
         <Button onClick={handleFormSubmit}>Submit</Button>
       </Modal>
 
-      <Button onClick={open}>Add Property</Button>
+      <Button onClick={openModal}>Add Property</Button>
     </>
   );
 }

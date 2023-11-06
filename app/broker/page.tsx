@@ -1,29 +1,30 @@
 import PocketBase from 'pocketbase'
-import { generateRandomPropertyData } from './testdata';
-import { CreateProperty } from './CreateProperty';
-// import { GettingStartedExample } from './GettingStarted';
+import { CreatePropertyModal } from './CreatePropertyButton';
+import { PropertyTable } from './PropertyTable';
+import { IPropertyData } from '@/types/property';
+
+export const dynamic = 'auto',
+  dynamicParams = true,
+  revalidate = 0,
+  fetchCache = 'auto',
+  runtime = 'nodejs',
+  preferredRegion = 'auto'
 
 async function getEntries() {
   const db = new PocketBase('http://127.0.0.1:8090')
-  let filter = ''
 
-  const data = await db.collection('properties').getList(1, 10, {
-    filter
-  })
+  const { items } = await db.collection('properties').getList(1, 25)
 
-  return data.items
+  return items as unknown
 }
 
-const data = generateRandomPropertyData(20); 
-
-export default function BrokerPage() {
-
-  // const data = getEntries()
+export default async function BrokerPage({ }: { searchParams?: any }) {
+  const data = await getEntries()
 
   return (
     <>
-      {/* <PropertyTable data={data} /> */}
-      <CreateProperty />
+      <CreatePropertyModal />
+      <PropertyTable data={data as IPropertyData[]} />
     </>
   )
 }
