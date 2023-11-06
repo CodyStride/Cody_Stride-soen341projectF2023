@@ -6,6 +6,9 @@ import { MantineProvider, ColorSchemeScript, Button, Group } from "@mantine/core
 import { AppShell, Burger } from '@mantine/core';
 import { theme } from "../theme";
 import { BiHomeAlt } from "react-icons/bi"
+import { Notifications } from "@mantine/notifications";
+
+import '@mantine/notifications/styles.css'
 
 export default function RootLayout({ children }: { children: any }) {
   return (
@@ -20,6 +23,7 @@ export default function RootLayout({ children }: { children: any }) {
       </head>
       <body>
         <MantineProvider theme={theme}>
+          <Notifications />
           <AppShell
             header={{ height: 60 }}
             // navbar={{ width: 300, breakpoint: 'sm' }}
@@ -34,9 +38,9 @@ export default function RootLayout({ children }: { children: any }) {
                 <Button variant="outline" size="lg" component="a" href="/search">
                   View Listings
                 </Button>
-                <Button variant="outline" size="lg" component="a" href="/dashboard">
+                {/* <Button variant="outline" size="lg" component="a" href="/dashboard">
                   Brokers
-                </Button>
+                </Button> */}
                 <Button variant="outline" size="lg" component="a" href="/broker">
                   Properties
                 </Button>
