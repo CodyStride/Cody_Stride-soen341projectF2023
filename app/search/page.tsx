@@ -67,7 +67,7 @@ export default async function SearchPage({ searchParams }: { searchParams: ISear
   const data = await getEntries(searchParams)
 
   return (<>
-    <SearchInput />
+    <SearchInput searchParams={searchParams} />
     <Space h="md" />
     {data ? <SearchList data={data as any} /> : <></>}
   </>)
