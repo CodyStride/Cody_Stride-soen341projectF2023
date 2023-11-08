@@ -34,7 +34,7 @@ export function EditPropertyModal({ data, setProperty, opened, closeModal }: Edi
     load()
 
     try {
-      const res = await fetch(`http://localhost:3000/broker/api`, {
+      const res = await fetch(`/broker/api`, {
         method: "PUT",
         headers: {
           "Content-type": "application/json",

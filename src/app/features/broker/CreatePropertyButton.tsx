@@ -37,7 +37,7 @@ export function CreatePropertyModal() {
     load() // Loading screen
 
     try {
-      const res = await fetch(`http://localhost:3000/broker/api`, {
+      const res = await fetch(`/api/broker`, {
         method: "POST",
         headers: {
           "Content-type": "application/json",
