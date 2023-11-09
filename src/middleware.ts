@@ -10,7 +10,7 @@ export async function middleware(request: NextRequest) {
     request.nextUrl.pathname.startsWith("/auth")
   ) {
     if (isLoggedIn) {
-      return NextResponse.redirect(new URL("/", request.url));
+      return NextResponse.redirect(new URL("/features", request.url));
     }
     return;
   }
@@ -18,7 +18,7 @@ export async function middleware(request: NextRequest) {
   // Keep search feature as not required to login
   if (
     request.nextUrl.pathname &&
-    request.nextUrl.pathname.startsWith("/features/search")
+    !request.nextUrl.pathname.startsWith("/features/broker")
   ) {
     return NextResponse.next();
   }
