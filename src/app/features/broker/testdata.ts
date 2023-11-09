@@ -1,4 +1,4 @@
-import { IPropertyData } from "./PropertyTable";
+import { IPropertyData } from "@/types/property";
 
 function getRandomInt(min: number, max: number) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -49,7 +49,7 @@ export function generateRandomPropertyData(count: number) {
   const searchCards: IPropertyData[] = [];
   for (let i = 1; i <= count; i++) {
     const searchCard = {
-      id: i,
+      id: i.toString(),
       type: getRandomType(),
       price: getRandomInt(100000, 1000000),
       description: getRandomDescription(),

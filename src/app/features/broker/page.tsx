@@ -1,7 +1,7 @@
-import PocketBase from 'pocketbase'
 import { CreatePropertyModal } from './CreatePropertyButton';
 import { PropertyTable } from './PropertyTable';
 import { IPropertyData } from '@/types/property';
+import db from '@/lib/dbServer';
 
 export const dynamic = 'auto',
   dynamicParams = true,
@@ -11,9 +11,7 @@ export const dynamic = 'auto',
   preferredRegion = 'auto'
 
 async function getEntries() {
-  const db = new PocketBase('http://127.0.0.1:8090')
-
-  const { items } = await db.collection('properties').getList(1, 25)
+  const { items } = await db.client.collection('properties').getList(1, 25)
 
   return items as unknown
 }
@@ -21,6 +19,7 @@ async function getEntries() {
 export default async function BrokerPage({ }: { searchParams?: any }) {
   const data = await getEntries()
 
+  // Invalid state since user must be login
   return (
     <>
       <CreatePropertyModal />

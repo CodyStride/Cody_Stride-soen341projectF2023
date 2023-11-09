@@ -1,5 +1,6 @@
 export interface IPropertyData {
   id: string
+  owner: string
   type: string
   price: number
   description?: string
