@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useCallback, useState } from 'react';
-import { ActionIcon, Autocomplete, Button, Group, NumberInput } from "@mantine/core";
+import { Autocomplete, Button, Group, NumberInput } from "@mantine/core";
 import { AiOutlineSearch } from "react-icons/ai"
 import { usePathname, useRouter } from "next/navigation"
 

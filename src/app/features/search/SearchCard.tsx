@@ -1,9 +1,12 @@
 'use client';
 
-import { Badge, Button, Card, Divider, Flex, Group, Image, Space, Text } from "@mantine/core";
+import { Badge, Button, Card, Divider, Group, Image, Space, Text } from "@mantine/core";
+import { modals } from "@mantine/modals";
 import { PiBed, PiToilet, PiGlobe } from "react-icons/pi"
+import { RequestModal } from "./RequestModal";
 
 export interface SearchCardProps {
+  owner: string
   id: string
   type: string
   price: number
@@ -16,12 +19,21 @@ export interface SearchCardProps {
 
 const defaultPage = "https://images.unsplash.com/photo-1527004013197-933c4bb611b3?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=720&q=80"
 
-export function SearchCard({ price, description, image, bedrooms, bathrooms, location }: SearchCardProps) {
+export function SearchCard({ id, owner, price, description, image, bedrooms, bathrooms, location }: SearchCardProps) {
   const formattedPrice = price.toLocaleString('en-US', {
     style: 'currency',
     currency: 'CAD',
     maximumFractionDigits: 0,
   });
+
+  const requestVisit = () => {
+    modals.open({
+      title: 'Request Visit Form',
+      children: (
+        <RequestModal propertyId={id} owner={owner} />
+      ),
+    })
+  }
 
   return (
     <Card shadow="sm" padding="lg" radius="md" withBorder>
@@ -66,10 +78,10 @@ export function SearchCard({ price, description, image, bedrooms, bathrooms, loc
       </Text>
 
       <Group>
-        <Button variant="light" color="blue" fullWidth mt="md" radius="md">
+        <Button variant="light" color="blue" fullWidth mt="md" radius="md" onClick={requestVisit}>
           Request Visit
         </Button>
-        <Button variant="light" fullWidth mt="md" radius="md">
+        <Button variant="light" fullWidth mt="md" radius="md" >
           Send Offer
         </Button>
       </Group>
