@@ -1,4 +1,4 @@
-import db from "@/db";
+import db from "@/lib/databaseClient";
 import { NextResponse } from "next/server";
 
 export async function POST(request: Request) {
@@ -19,4 +19,4 @@ export async function POST(request: Request) {
             }
         )
     }
-}
+} 

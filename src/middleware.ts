@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import db from "@/db";
+import db from "@/lib/databaseClient";
 
 export async function middleware(request: NextRequest) {
   console.log(`[middleware] ${request.method} ${request.url}`);
