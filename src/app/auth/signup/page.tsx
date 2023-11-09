@@ -48,8 +48,9 @@ function SignUpPage() {
         setError('Failed to register user');
         return;
       };
-      const data = await response.json();
-      console.log(data);
+      await response.json();
+
+      router.push('/auth/login');
     } catch (err) {
       setError('Failed to register user');
     }
