@@ -1,57 +1,59 @@
 'use client';
 
-import { Dispatch, SetStateAction, useState } from 'react';
+import { useState } from 'react';
 import { useDisclosure } from '@mantine/hooks';
 import { Modal, Button, TextInput, NumberInput, LoadingOverlay } from '@mantine/core';
 import { notifications } from '@mantine/notifications';
-import { IPropertyData } from '@/types/property';
 import { useRouter } from 'next/navigation';
 
-export interface EditPropertyModalProps {
-  opened: boolean;
-  closeModal: () => void;
-  data: IPropertyData;
-  setProperty: Dispatch<SetStateAction<IPropertyData | undefined>>;
-}
-
-export function EditPropertyModal({ data, setProperty, opened, closeModal }: EditPropertyModalProps) {
-  // Manage load screen
+export function CreatePropertyModal() {
+  const [opened, { open: openModal, close: closeModal }] = useDisclosure(false);
   const [visible, { open: load, close: ready }] = useDisclosure(false);
-  
+
+  // State variables for form fields
+  const [propertyData, setPropertyData] = useState({
+    type: '',
+    price: 0,
+    description: '',
+    location: '',
+    bedrooms: 1,
+    bathrooms: 1,
+    image: '',
+  });
+
   // Handle form input changes
   const handleInputChange = (key: any, value: any) => {
-    setProperty({ ...data, [key]: value });
+    setPropertyData({ ...propertyData, [key]: value });
   };
 
   // Refresh page
   const router = useRouter();
 
-  // Submitting form
   const handleFormSubmit = async (e: any) => {
     e.preventDefault();
 
-    console.log('editing')
-    load()
+    console.log('submitting')
+    load() // Loading screen
 
     try {
-      const res = await fetch(`http://localhost:3000/broker/api`, {
-        method: "PUT",
+      const res = await fetch(`/api/broker`, {
+        method: "POST",
         headers: {
           "Content-type": "application/json",
         },
-        body: JSON.stringify(data),
+        body: JSON.stringify(propertyData),
       });
 
       if (!res.ok) {
         throw new Error("Failed to update topic");
       }
 
-      ready()
+      ready() // Stop loading screen
       closeModal()
       router.refresh();
 
       notifications.show({
-        title: 'Property Sucessfully Edited',
+        title: 'Property Sucessfully Added',
         message: 'Hey there, your code is awesome! 🤥',
         color: 'green',
       })
@@ -62,12 +64,12 @@ export function EditPropertyModal({ data, setProperty, opened, closeModal }: Edi
 
   return (
     <>
-      <Modal opened={opened} onClose={closeModal} title="Edit Property">
+      <Modal opened={opened} onClose={closeModal} title="Add Property">
         <LoadingOverlay visible={visible} zIndex={1000} overlayProps={{ radius: "sm", blur: 2 }} />
         {/* Form content */}
         <TextInput
           label="Property Type"
-          value={data.type}
+          value={propertyData.type}
           onChange={(event) => handleInputChange('type', event.currentTarget.value)}
         />
         <NumberInput
@@ -76,38 +78,40 @@ export function EditPropertyModal({ data, setProperty, opened, closeModal }: Edi
           label="Price"
           prefix="$ "
           allowNegative={false}
-          value={data.price}
+          value={propertyData.price}
           onChange={(value) => handleInputChange('price', value)}
         />
         <TextInput
           label="Description"
-          value={data.description}
+          value={propertyData.description}
           onChange={(event) => handleInputChange('description', event.currentTarget.value)}
         />
         <TextInput
           label="Location"
-          value={data.location}
+          value={propertyData.location}
           onChange={(event) => handleInputChange('location', event.currentTarget.value)}
         />
         <NumberInput
           label="Bedrooms"
-          value={data.bedrooms}
+          value={propertyData.bedrooms}
           allowNegative={false}
           onChange={(value) => handleInputChange('bedrooms', value)}
         />
         <NumberInput
           label="Bathrooms"
-          value={data.bathrooms}
+          value={propertyData.bathrooms}
           allowNegative={false}
           onChange={(value) => handleInputChange('bathrooms', value)}
         />
         <TextInput
           label="Image URL"
-          value={data.image}
+          value={propertyData.image}
           onChange={(event) => handleInputChange('image', event.currentTarget.value)}
         />
         <Button onClick={handleFormSubmit}>Submit</Button>
       </Modal>
+
+      <Button onClick={openModal}>Add Property</Button>
     </>
   );
 }

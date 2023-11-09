@@ -11,6 +11,7 @@
   "dependencies": {
     "@emotion/react": "^11.11.1",
     "@mantine/core": "^7.1.7",
+    "@mantine/form": "^7.2.1",
     "@mantine/hooks": "^7.1.7",
     "@mantine/modals": "^7.1.7",
     "@mantine/notifications": "^7.2.0",
@@ -33,7 +34,7 @@
     "eslint": "8.41.0",
     "eslint-config-next": "13.4.4",
     "postcss": "^8.4.24",
-    "postcss-preset-mantine": "1.9.0",
+    "postcss-preset-mantine": "1.9.1",
     "postcss-simple-vars": "^7.0.1",
     "typescript": "5.0.4",
     "webpack": "^5.89.0"

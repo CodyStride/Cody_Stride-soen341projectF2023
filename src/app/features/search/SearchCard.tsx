@@ -4,7 +4,7 @@ import { Badge, Button, Card, Divider, Flex, Group, Image, Space, Text } from "@
 import { PiBed, PiToilet, PiGlobe } from "react-icons/pi"
 
 export interface SearchCardProps {
-  id: number
+  id: string
   type: string
   price: number
   description?: string

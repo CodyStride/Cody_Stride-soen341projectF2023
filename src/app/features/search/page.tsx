@@ -1,7 +1,7 @@
 import { Space } from "@mantine/core"
 import { SearchInput } from "./SearchInput"
-import PocketBase from 'pocketbase'
 import { SearchList } from "./SearchList"
+import db from "@/lib/dbServer"
 
 export interface ISearchParams {
   type?: string
@@ -19,7 +19,6 @@ export const dynamic = 'auto',
   preferredRegion = 'auto'
 
 async function getEntries({ type, min_price, max_price, bedrooms, bathrooms }: ISearchParams) {
-  const db = new PocketBase('http://127.0.0.1:8090')
   let filter = ''
 
   if (type) {
@@ -56,7 +55,7 @@ async function getEntries({ type, min_price, max_price, bedrooms, bathrooms }: I
     filter += `bathrooms >= ${bathrooms}`;
   }
 
-  const data = await db.collection('properties').getList(1, 50, {
+  const data = await db.client.collection('properties').getList(1, 50, {
     filter
   })
 
