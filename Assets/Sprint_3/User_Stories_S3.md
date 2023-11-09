@@ -8,7 +8,7 @@ As a user, I want to be able to search for specific brokers to find information 
 2. User searches for the broker based on criteria
 3. User is shown a list of brokers that correspond to his search
 4. User clicks on a specific broker
-5. User is able to see the different listings that this broekr has posted
+5. User is able to see the different listings that this broker has posted
 
 ### Acceptance Criteria
 - [ ] User acceptance flow is respected
