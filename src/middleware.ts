@@ -15,6 +15,14 @@ export async function middleware(request: NextRequest) {
     return;
   }
 
+  // Keep search feature as not required to login
+  if (
+    request.nextUrl.pathname &&
+    request.nextUrl.pathname.startsWith("/features/search")
+  ) {
+    return NextResponse.next();
+  }
+
   if (!isLoggedIn) {
     return NextResponse.redirect(new URL("/auth/login", request.url));
   }

@@ -27,7 +27,7 @@ export function DeletePropertyModal({ propertyId, opened, closeModal }: DeletePr
     load()
 
     try {
-      const res = await fetch(`/broker/api?id=${propertyId}`, {
+      const res = await fetch(`/api/broker?id=${propertyId}`, {
         method: "DELETE",
       });
 
