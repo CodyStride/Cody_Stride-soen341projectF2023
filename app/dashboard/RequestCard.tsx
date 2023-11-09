@@ -15,6 +15,13 @@ export interface RequestCardProps {
   house_occupancy_date: string;
 }
 
+export interface VisitAppointmentProps {
+    visitor_name: string;
+    visit_date: string;
+    visit_address: string;
+    property_id: number;
+  }  
+
 export function RequestCard({
     broker_name,
     license_number,
@@ -45,4 +52,20 @@ export function RequestCard({
     );
   }
 
-
+  export function VisitAppointmentCard({
+    visitor_name,
+    visit_date,
+    visit_address,
+    property_id,
+  }: VisitAppointmentProps) {
+    const itemStyle = { marginBottom: '4px' };
+  
+    return (
+      <Card shadow="sm" padding="lg" radius="md" withBorder style={{ width: 340, margin: 'auto' }}>
+        <div style={itemStyle}><Text>Visitor: {visitor_name}</Text></div>
+        <div style={itemStyle}><Text>Date: {visit_date}</Text></div>
+        <div style={itemStyle}><Text>Address: {visit_address}</Text></div>
+        <div style={itemStyle}><Text>Property id: {property_id}</Text></div>
+      </Card>
+    );
+  }
