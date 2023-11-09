@@ -3,9 +3,10 @@ import { ReadonlyRequestCookies } from "next/dist/server/web/spec-extension/adap
 
 export const POCKET_BASE_URL = "http://127.0.0.1:8090";
 
-export class DatabaseClient {
+export class DatabaseServer {
   client: PocketBase;
   clientId?: string;
+  authenticated: boolean = false;
 
   constructor() {
     this.client = new PocketBase(POCKET_BASE_URL);
@@ -63,6 +64,6 @@ export class DatabaseClient {
   }
 }
 
-export const db = new DatabaseClient();
+export const db = new DatabaseServer();
 
 export default db;

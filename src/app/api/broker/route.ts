@@ -1,69 +1,99 @@
 import { NextResponse } from "next/server";
-import PocketBase from "pocketbase";
 import { IPropertyData } from "@/types/property";
+import db from "@/lib/dbServer";
+import { cookies } from "next/headers";
 
 export async function POST(request: any) {
-  const {
-    type,
-    bathrooms,
-    bedrooms,
-    price,
-    description,
-    image,
-    location,
-  }: IPropertyData = await request.json();
-  console.log("Creating record");
+  try {
+    const cookieStore = cookies();
+    const user = await db.getUser(cookieStore);
 
-  const pb = new PocketBase("http://127.0.0.1:8090");
+    if (!user) throw "User not authenticated";
 
-  await pb.collection("properties").create({
-    type,
-    bathrooms,
-    bedrooms,
-    price,
-    description,
-    image,
-    location,
-  });
+    const {
+      type,
+      bathrooms,
+      bedrooms,
+      price,
+      description,
+      image,
+      location,
+    }: IPropertyData = await request.json();
 
-  return NextResponse.json({ message: "Property Created" }, { status: 201 });
+    await db.client.collection("properties").create({
+      type,
+      owner: user.id,
+      bathrooms,
+      bedrooms,
+      price,
+      description,
+      image,
+      location,
+    });
+
+    return NextResponse.json({ message: "Property Created" }, { status: 201 });
+  } catch (err: any) {
+    console.log(err);
+    return new Response(
+      JSON.stringify({ error: err.message || err.toString() }),
+      {
+        status: 500,
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+  }
 }
 
 export async function PUT(request: any) {
-  const {
-    id,
-    type,
-    bathrooms,
-    bedrooms,
-    price,
-    description,
-    image,
-    location,
-  }: IPropertyData = await request.json();
-  
-  const pb = new PocketBase("http://127.0.0.1:8090");
+  try {
+    const cookieStore = cookies();
+    const user = await db.getUser(cookieStore);
 
-  await pb.collection("properties").update(id, {
-    type,
-    bathrooms,
-    bedrooms,
-    price,
-    description,
-    image,
-    location,
-  });
+    if (!user) throw "User not authenticated";
+    const {
+      id,
+      type,
+      bathrooms,
+      bedrooms,
+      price,
+      description,
+      image,
+      location,
+    }: IPropertyData = await request.json();
 
-  return NextResponse.json({ message: "Topic edited" }, { status: 200 });
+    await db.client.collection("properties").update(id, {
+      type,
+      owner: user.id,
+      bathrooms,
+      bedrooms,
+      price,
+      description,
+      image,
+      location,
+    });
+
+    return NextResponse.json({ message: "Topic edited" }, { status: 200 });
+  } catch (err: any) {
+    return new Response(
+      JSON.stringify({ error: err.message || err.toString() }),
+      {
+        status: 500,
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+  }
 }
 
 export async function GET() {}
 
 export async function DELETE(request: any) {
   const id = request.nextUrl.searchParams.get("id");
-  console.log(id);
-  const pb = new PocketBase("http://127.0.0.1:8090");
 
-  await pb.collection("properties").delete(id);
+  await db.client.collection("properties").delete(id);
 
   return NextResponse.json({ message: "Topic deleted" }, { status: 200 });
 }

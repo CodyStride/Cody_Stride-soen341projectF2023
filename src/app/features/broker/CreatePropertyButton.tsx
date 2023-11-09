@@ -12,7 +12,6 @@ export function CreatePropertyModal() {
 
   // State variables for form fields
   const [propertyData, setPropertyData] = useState({
-    id: 0, // You can generate a unique ID
     type: '',
     price: 0,
     description: '',

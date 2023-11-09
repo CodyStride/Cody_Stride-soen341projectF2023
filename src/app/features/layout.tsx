@@ -1,7 +1,7 @@
 'use client';
 
 import { BiHomeAlt } from "react-icons/bi"
-import { Button, Group , AppShell, Burger } from '@mantine/core';
+import { Button, Group, AppShell, Burger } from '@mantine/core';
 
 export default function FeaturePage({ children }: { children: any }) {
   return (<AppShell
@@ -10,20 +10,22 @@ export default function FeaturePage({ children }: { children: any }) {
     padding="md"
   >
     <AppShell.Header>
-      <Group h="100%" px="md">
-        <Burger hiddenFrom="sm" size="sm" />
-        <Button variant="outline" size="lg" component="a" href="/features">
-          <BiHomeAlt />
-        </Button>
-        <Button variant="outline" size="lg" component="a" href="/features/search">
-          View Listings
-        </Button>
-        {/* <Button variant="outline" size="lg" component="a" href="/dashboard">
+      <Group h="100%" gap={0} >
+        <Group justify="center" pb="xl" px="md" >
+          <Burger hiddenFrom="sm" size="sm" />
+          <Button variant="outline" size="lg" component="a" href="/features">
+            <BiHomeAlt />
+          </Button>
+          <Button variant="outline" size="lg" component="a" href="/features/search">
+            View Listings
+          </Button>
+          {/* <Button variant="outline" size="lg" component="a" href="/dashboard">
           Brokers
         </Button> */}
-        <Button variant="outline" size="lg" component="a" href="/features/broker">
-          Properties
-        </Button>
+          <Button variant="outline" size="lg" component="a" href="/features/broker">
+            Properties
+          </Button>
+        </Group>
       </Group>
     </AppShell.Header>
 

@@ -11,8 +11,8 @@ import {
   Anchor,
 } from '@mantine/core';
 import classes from '../AuthenticationImage.module.css';
-import { useState } from 'react'
 import { useForm } from '@mantine/form';
+import { notifications } from '@mantine/notifications';
 
 interface IFormLogin {
   email: string;
@@ -21,9 +21,6 @@ interface IFormLogin {
 
 function LoginPage() {
   const route = useRouter();
-  const [email, setEmail] = useState<string>('');
-  const [password, setPassword] = useState<string>('');
-  const [error, setError] = useState('');
 
   const form = useForm({
     initialValues: {
@@ -46,17 +43,20 @@ function LoginPage() {
         body: JSON.stringify(form)
       });
       if (!response.ok) {
-        setError('Failed to authenticate user');
-        return;
+        throw 'Failed to authenticate user';
       };
       const data = await response.json();
       if (data?.token) {
-        route.push('/');
+        route.push('/features');
       } else {
-        setError('Failed to authenticate user');
+        throw 'Failed to authenticate user';
       }
     } catch (err) {
-      setEmail('Failed to authenticate user');
+      notifications.show({
+        color: 'red',
+        title: 'Authentication Error',
+        message: 'Unable to authenticate user.'
+      })
     }
   };
 
