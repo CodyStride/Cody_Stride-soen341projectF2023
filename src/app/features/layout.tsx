@@ -19,11 +19,14 @@ export default function FeaturePage({ children }: { children: any }) {
           <Button variant="outline" size="lg" component="a" href="/features/search">
             View Listings
           </Button>
-          {/* <Button variant="outline" size="lg" component="a" href="/dashboard">
-          Brokers
-        </Button> */}
           <Button variant="outline" size="lg" component="a" href="/features/broker">
             Properties
+          </Button>
+          <Button variant="outline" size="lg" component="a" href="/features/dashboard">
+            Brokers
+          </Button>
+          <Button variant="outline" size="lg" component="a" href="/features/system_admin">
+            View Brokers
           </Button>
         </Group>
       </Group>
