@@ -1,7 +1,8 @@
 'use client';
 
 import { Container, Flex, Paper, SimpleGrid, Text } from "@mantine/core";
-import { SearchCard, SearchCardProps } from "./SearchCard";
+import { SearchCard } from "./SearchCard";
+import { IPropertyData } from "@/types/property";
 
 function NoSearchResult() {
   return (
@@ -18,8 +19,8 @@ function NoSearchResult() {
   );
 }
 
-export function SearchList({ data }: { data: SearchCardProps[] }) {
+export function SearchList({ data: dataList }: { data: IPropertyData[] }) {
   return (<SimpleGrid cols={5}>
-    {data.length > 0 ? data?.map((props) => <SearchCard key={props.id} {...props} />) : <NoSearchResult />}
+    {dataList.length > 0 ? dataList?.map((data) => <SearchCard key={data.id} data={data} />) : <NoSearchResult />}
   </SimpleGrid>)
 }

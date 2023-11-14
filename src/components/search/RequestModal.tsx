@@ -1,6 +1,6 @@
 'use client';
 
-import { Button, LoadingOverlay, Textarea } from '@mantine/core';
+import { Button, Flex, LoadingOverlay, Textarea } from '@mantine/core';
 import { DatePicker } from '@mantine/dates';
 import { useForm } from '@mantine/form';
 import { useDisclosure } from '@mantine/hooks';
@@ -74,17 +74,25 @@ export function RequestModal({ owner, propertyId }: RequestModalProps) {
   };
 
   return (<form onSubmit={form.onSubmit(onSubmit)}>
-    <LoadingOverlay visible={visible} zIndex={1000} overlayProps={{ radius: "sm", blur: 2 }} />
-    <DatePicker {...form.getInputProps('date')} />
-    <Textarea
-      placeholder="optional"
-      label="Message"
-      autosize
-      minRows={2}
-      {...form.getInputProps('message')}
-    />
-    <Button fullWidth mt="xl" size="md" type="submit">
-      Submit
-    </Button>
+    <Flex
+      data-cy="request-visit-modal"
+      justify="center"
+      align="center"
+      direction="column"
+      wrap="wrap"
+    >
+      <LoadingOverlay visible={visible} zIndex={1000} overlayProps={{ radius: "sm", blur: 2 }} />
+      <DatePicker {...form.getInputProps('date')} />
+      <Textarea
+        placeholder="optional"
+        label="Message"
+        autosize
+        minRows={2}
+        {...form.getInputProps('message')}
+      />
+      <Button fullWidth mt="xl" size="md" type="submit">
+        Submit
+      </Button>
+    </Flex>
   </form>)
 }

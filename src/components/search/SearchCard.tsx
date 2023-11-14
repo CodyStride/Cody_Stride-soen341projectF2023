@@ -4,22 +4,17 @@ import { Badge, Button, Card, Divider, Group, Image, Space, Text } from "@mantin
 import { modals } from "@mantine/modals";
 import { PiBed, PiToilet, PiGlobe } from "react-icons/pi"
 import { RequestModal } from "./RequestModal";
+import { IPropertyData } from "@/types/property";
 
 export interface SearchCardProps {
-  owner: string
-  id: string
-  type: string
-  price: number
-  description?: string
-  location?: string
-  bedrooms: number
-  bathrooms: number
-  image?: string
+  data: IPropertyData
 }
 
 const defaultPage = "https://images.unsplash.com/photo-1527004013197-933c4bb611b3?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=720&q=80"
 
-export function SearchCard({ id, owner, price, description, image, bedrooms, bathrooms, location }: SearchCardProps) {
+export function SearchCard({ data }: SearchCardProps) {
+  const { id, owner, price, description, image, bedrooms, bathrooms, location } = data;
+
   const formattedPrice = price.toLocaleString('en-US', {
     style: 'currency',
     currency: 'CAD',
@@ -36,7 +31,14 @@ export function SearchCard({ id, owner, price, description, image, bedrooms, bat
   }
 
   return (
-    <Card shadow="sm" padding="lg" radius="md" withBorder>
+    <Card
+      data-cy="search-card"
+      shadow="sm"
+      padding="lg"
+      radius="md"
+      withBorder
+      className="search-card"
+    >
       <Card.Section>
         <Image
           src={image ? image : defaultPage}

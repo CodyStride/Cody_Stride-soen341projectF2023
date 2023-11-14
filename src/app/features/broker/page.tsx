@@ -1,5 +1,5 @@
-import { CreatePropertyModal } from './CreatePropertyButton';
-import { PropertyTable } from './PropertyTable';
+import { CreatePropertyModal } from '@/components/broker';
+import { PropertyTable } from '@/components/broker/PropertyTable';
 import { IPropertyData } from '@/types/property';
 import db from '@/lib/dbServer';
 

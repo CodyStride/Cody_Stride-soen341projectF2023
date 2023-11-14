@@ -71,3 +71,5 @@ export function PropertyTable({ data }: { data: IPropertyData[] }) {
     </>
   );
 }
+
+export default PropertyTable
