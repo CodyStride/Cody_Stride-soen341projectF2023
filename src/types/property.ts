@@ -9,3 +9,16 @@ export interface IPropertyData {
   bathrooms: number
   image?: string
 }
+
+export interface ISignUpPayload {
+  username?: string;
+  email: string;
+  name?: string;
+  type: USER_TYPES;
+}
+
+export enum USER_TYPES {
+  BROKER = 'broker',
+  BUYER = 'buyer',
+  RENTER = 'renter',
+}

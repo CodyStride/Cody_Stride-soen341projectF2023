@@ -39,3 +39,7 @@ pb_data
 pb_migrations
 pocketbase.exe
 pocketbase
+
+# Ignore Cypress binaries
+cypress/videos/
+cypress/screenshots/

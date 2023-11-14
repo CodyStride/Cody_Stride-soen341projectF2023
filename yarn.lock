@@ -3314,10 +3314,10 @@ lru-cache@^6.0.0:
   dependencies:
     yallist "^4.0.0"
 
-mantine-datatable@^7.1.1:
-  version "7.1.5"
-  resolved "https://registry.yarnpkg.com/mantine-datatable/-/mantine-datatable-7.1.5.tgz#9bb04070e526124d4fc281f0ae73b8dd604fa606"
-  integrity sha512-5tSxEM/ECxksgjaVWKZ0S+etYEf5Gc6Lbl2COIWbbx9x4/jkjeneatnOKlAudMGXbSK8X0q4bFCzaEXtnZaYuQ==
+mantine-datatable@^7.1.6:
+  version "7.1.6"
+  resolved "https://registry.yarnpkg.com/mantine-datatable/-/mantine-datatable-7.1.6.tgz#c90b652ebb4ce0d4ad78d06d611a0c42c157d3b6"
+  integrity sha512-9kjEIqJlaEWkXOYn3+mTHOsG6xhF0z66SPxjOlBdOjLol8x6rRehjkNzh4VepwfZ1pLNqgikoWdLSpb2rlZacA==
 
 media-query-parser@^2.0.2:
   version "2.0.2"

@@ -1,7 +1,6 @@
 import { Space } from "@mantine/core"
-import { SearchInput } from "./SearchInput"
-import { SearchList } from "./SearchList"
 import db from "@/lib/dbServer"
+import { SearchInput, SearchList } from "@/components/search"
 
 export interface ISearchParams {
   type?: string
