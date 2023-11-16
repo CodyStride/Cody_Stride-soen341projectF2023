@@ -1,10 +1,11 @@
 import db from "@/lib/dbServer";
 import { NextResponse } from "next/server";
+import { ISignUpPayload } from "@/types/property";
 
 export async function POST(request: Request) {
     try {
-        const { email, password } = await request.json();
-        const result = await db.register(email, password);
+        const payload: ISignUpPayload = await request.json();
+        const result = await db.register(payload);
         console.log(result);
 
         return NextResponse.json(result);
