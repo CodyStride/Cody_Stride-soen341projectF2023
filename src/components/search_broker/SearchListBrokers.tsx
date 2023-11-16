@@ -1,6 +1,6 @@
 'use client';
 
-import { Flex, SimpleGrid } from "@mantine/core";
+import { SimpleGrid } from "@mantine/core";
 import { SearchCardBrokers, SearchCardProps } from "./SearchCardBrokers";
 
 export function SearchListBrokers({ data }: { data: SearchCardProps[] }) {
