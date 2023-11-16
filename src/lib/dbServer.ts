@@ -1,5 +1,7 @@
 import PocketBase from "pocketbase";
 import { ReadonlyRequestCookies } from "next/dist/server/web/spec-extension/adapters/request-cookies";
+import { APP_DATABASE } from "@/lib/dbNames";
+import { ISignUpPayload } from "@/types/property";
 
 export const POCKET_BASE_URL = "https://cody-stridy.pockethost.io";
 
@@ -14,7 +16,7 @@ export class DatabaseServer {
   async authenticate(email: string, password: string) {
     try {
       const result = await this.client
-        .collection("users")
+        .collection(APP_DATABASE.USERS)
         .authWithPassword(email, password);
       console.log("authenticate result:", result);
       if (!result?.token) {
@@ -28,12 +30,15 @@ export class DatabaseServer {
     }
   }
 
-  async register(email: string, password: string) {
+  async register(payload: ISignUpPayload) {
+    const { email, password, type, name } = payload;
     try {
-      const result = await this.client.collection("users").create({
+      const result = await this.client.collection(APP_DATABASE.USERS).create({
         email,
         password,
         passwordConfirm: password,
+        type,
+        name,
       });
 
       return result;
