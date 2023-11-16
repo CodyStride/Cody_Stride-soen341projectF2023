@@ -1,5 +1,4 @@
 import { NextResponse } from "next/server";
-import { IPropertyData } from "@/types/property";
 import db from "@/lib/dbServer";
 import { cookies } from "next/headers";
 import { APP_DATABASE } from "@/lib/dbNames";

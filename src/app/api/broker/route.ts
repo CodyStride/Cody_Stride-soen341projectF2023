@@ -91,9 +91,21 @@ export async function PUT(request: any) {
 export async function GET() {}
 
 export async function DELETE(request: any) {
-  const id = request.nextUrl.searchParams.get("id");
-
-  await db.client.collection("properties").delete(id);
-
-  return NextResponse.json({ message: "Topic deleted" }, { status: 200 });
+  try {
+    const id = request.nextUrl.searchParams.get("id");
+  
+    await db.client.collection("properties").delete(id);
+  
+    return NextResponse.json({ message: "Topic deleted" }, { status: 200 });
+  } catch(err: any) {
+    return new Response(
+      JSON.stringify({ error: err.message || err.toString() }),
+      {
+        status: 500,
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+  }
 }
