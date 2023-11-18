@@ -24,3 +24,11 @@ export enum USER_TYPES {
   RENTER = 'renter',
   SYSADM = "system_admin",
 }
+
+export interface ISearchPropertyParams {
+  type?: string
+  min_price?: number
+  max_price?: number
+  bedrooms?: number
+  bathrooms?: number
+}

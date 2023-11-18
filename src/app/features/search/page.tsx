@@ -1,14 +1,7 @@
 import { Space } from "@mantine/core"
 import db from "@/lib/dbServer"
 import { SearchInput, SearchList } from "@/components/search"
-
-export interface ISearchParams {
-  type?: string
-  min_price?: number
-  max_price?: number
-  bedrooms?: number
-  bathrooms?: number
-}
+import { ISearchPropertyParams } from "@/types/property"
 
 export const dynamic = 'auto',
   dynamicParams = true,
@@ -17,7 +10,7 @@ export const dynamic = 'auto',
   runtime = 'nodejs',
   preferredRegion = 'auto'
 
-async function getEntries({ type, min_price, max_price, bedrooms, bathrooms }: ISearchParams) {
+async function getEntries({ type, min_price, max_price, bedrooms, bathrooms }: ISearchPropertyParams) {
   let filter = ''
 
   if (type) {
@@ -61,11 +54,11 @@ async function getEntries({ type, min_price, max_price, bedrooms, bathrooms }: I
   return data.items
 }
 
-export default async function SearchPage({ searchParams }: { searchParams: ISearchParams }) {
+export default async function SearchPage({ searchParams }: { searchParams: ISearchPropertyParams }) {
   const data = await getEntries(searchParams)
 
   return (<>
-    <SearchInput />
+    <SearchInput searchParams={searchParams}/>
     <Space h="md" />
     {data ? <SearchList data={data as any} /> : <></>}
   </>)

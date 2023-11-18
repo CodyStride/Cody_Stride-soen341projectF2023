@@ -4,32 +4,43 @@ import React, { useCallback, useState } from 'react';
 import { Autocomplete, Button, Group, NumberInput } from "@mantine/core";
 import { AiOutlineSearch } from "react-icons/ai"
 import { usePathname, useRouter } from "next/navigation"
+import { ISearchPropertyParams } from '@/types/property';
 
 const propertyOptions = ["Any", "House", "Apartment", "Condo"];
 
-export function SearchInput() {
+export function SearchInput({ searchParams }: { searchParams: ISearchPropertyParams }) {
   // Define state variables for each input
-  const [propertyType, setPropertyType] = useState("Any");
-  const [minPrice, setMinPrice] = useState(0);
-  const [maxPrice, setMaxPrice] = useState(250_000);
-  const [numBedrooms, setNumBedrooms] = useState(1);
-  const [numBathrooms, setNumBathrooms] = useState(1);
+  const { bathrooms, bedrooms, max_price, min_price, type } = searchParams;
+  const [propertyType, setPropertyType] = useState(type);
+  const [minPrice, setMinPrice] = useState(min_price);
+  const [maxPrice, setMaxPrice] = useState(max_price);
+  const [numBedrooms, setNumBedrooms] = useState(bedrooms);
+  const [numBathrooms, setNumBathrooms] = useState(bathrooms);
 
   const router = useRouter();
   const pathname = usePathname();
 
   const startSearch = useCallback(() => {
-    const params = new URLSearchParams(window.location.search)
+    const params = new URLSearchParams()
 
-    params.set("type", propertyType);
-
-    params.set("min_price", minPrice.toString());
-    params.set("max_price", maxPrice.toString());
-    params.set("bedrooms", numBedrooms.toString());
-    params.set("bathrooms", numBathrooms.toString());
+    if (propertyType) params.set("type", propertyType);
+    if (minPrice) params.set("min_price", minPrice.toString());
+    if (maxPrice) params.set("max_price", maxPrice.toString());
+    if (numBedrooms) params.set("bedrooms", numBedrooms.toString());
+    if (numBathrooms) params.set("bathrooms", numBathrooms.toString());
 
     router.replace(`${pathname}?${params.toString()}`);
   }, [propertyType, minPrice, maxPrice, numBedrooms, numBathrooms, router, pathname]);
+
+  const resetSearch = () => {
+    setPropertyType(undefined);
+    setMinPrice(undefined);
+    setMaxPrice(undefined);
+    setNumBedrooms(undefined);
+    setNumBathrooms(undefined);
+  
+    router.replace(`${pathname}`);
+  }
 
   return (
     <Group>
@@ -76,6 +87,9 @@ export function SearchInput() {
       />
       <Button onClick={startSearch}>
         <AiOutlineSearch />
+      </Button>
+      <Button onClick={resetSearch}>
+        Reset
       </Button>
     </Group>
   );
