@@ -1,6 +1,7 @@
 import { defineConfig } from "cypress";
 
 export default defineConfig({
+  projectId: "9f6qve",
   fixturesFolder: false,
   component: {
     devServer: {
