@@ -15,6 +15,6 @@ export default defineConfig({
       // implement node event listeners here
     },
     supportFile: false,
-    baseUrl: "http://localhsot:3000",
+    baseUrl: "http://localhost:3000",
   },
 });
