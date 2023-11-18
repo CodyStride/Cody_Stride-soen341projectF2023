@@ -1,4 +1,4 @@
-# Contribution Log - Sprint 2
+# Contribution Log - Sprint 3
 
 |              | Student ID | Role             | Hours |
 |--------------|------------|------------------|-------|
