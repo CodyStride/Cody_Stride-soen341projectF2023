@@ -1,10 +1,10 @@
 'use client';
 
 import { IPropertyData } from "@/types/property";
-import { ActionIcon, Box, Group } from "@mantine/core";
+import { ActionIcon, Box, Group, NumberFormatter } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { DataTable } from "mantine-datatable";
-import { AiOutlineEye, AiOutlineEdit, AiOutlineDelete } from 'react-icons/ai'
+import { AiOutlineEdit, AiOutlineDelete } from 'react-icons/ai'
 import { EditPropertyModal } from "./EditPropertyModal";
 import { useState } from "react";
 import { DeletePropertyModal } from "./DeletePropertyModal";
@@ -31,10 +31,17 @@ export function PropertyTable({ data }: { data: IPropertyData[] }) {
       {propertyData && <EditPropertyModal setProperty={setPropertyData} data={propertyData} closeModal={closeEdit} opened={openedEdit} />}
       {propertyData && <DeletePropertyModal propertyId={propertyData.id} closeModal={closeDelete} opened={openedDelete} />}
       <DataTable
+        striped
+        highlightOnHover
         withTableBorder
+        withColumnBorders
         columns={[
           { accessor: 'type', title: 'Type' },
-          { accessor: 'price', title: 'Price (CAD $)' },
+          {
+            accessor: 'price', title: 'Price (CAD $)', render: (record) => (
+              <NumberFormatter value={record.price} thousandSeparator />
+            )
+          },
           { accessor: 'description', title: 'Description' },
           { accessor: 'location', title: 'Location' },
           { accessor: 'bedrooms', title: 'Bedrooms' },

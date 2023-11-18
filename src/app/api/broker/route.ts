@@ -92,6 +92,11 @@ export async function GET() {}
 
 export async function DELETE(request: any) {
   try {
+    const cookieStore = cookies();
+    const user = await db.getUser(cookieStore);
+
+    if (!user) throw "User not authenticated";
+    
     const id = request.nextUrl.searchParams.get("id");
   
     await db.client.collection("properties").delete(id);

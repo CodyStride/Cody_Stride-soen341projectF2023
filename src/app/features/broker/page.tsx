@@ -2,6 +2,7 @@ import { CreatePropertyModal } from '@/components/broker';
 import { PropertyTable } from '@/components/broker/PropertyTable';
 import { IPropertyData } from '@/types/property';
 import db from '@/lib/dbServer';
+import { cookies } from 'next/headers';
 
 export const dynamic = 'auto',
   dynamicParams = true,
@@ -11,9 +12,17 @@ export const dynamic = 'auto',
   preferredRegion = 'auto'
 
 async function getEntries() {
-  const { items } = await db.client.collection('properties').getList(1, 25)
+  const cookieStore = cookies();
+  const user = await db.getUser(cookieStore);
+  
+  if (!user)
+    throw 'User not authenticated';
 
-  return items as unknown
+  const { items } = await db.client.collection('properties').getList<IPropertyData>(1, 25, {
+    filter: `owner = "${user.id}"`
+  })
+
+  return items
 }
 
 export default async function BrokerPage({ }: { searchParams?: any }) {
@@ -23,7 +32,7 @@ export default async function BrokerPage({ }: { searchParams?: any }) {
   return (
     <>
       <CreatePropertyModal />
-      <PropertyTable data={data as IPropertyData[]} />
+      <PropertyTable data={data} />
     </>
   )
 }
