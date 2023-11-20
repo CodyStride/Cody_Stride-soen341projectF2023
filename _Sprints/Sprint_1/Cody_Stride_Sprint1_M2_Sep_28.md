@@ -3,7 +3,7 @@
 On September 28th, the team had its second big meeting. Throughout the week, we'd met a few times to discuss the progress that we were making. However, we'd only 
 meet for about 10 minutes. During this meeting, we mostly clarified some aspects relating to the user stories and decide what the task breakdown'd be in more detail
 
-##Topics Discussed:
+## Topics Discussed:
 
 * ### Confirming User Stories:
 Initially, we'd already discussed the 4 user stories and what they'd be. We then added more detail to them and confirmed that we would go along with these for the
