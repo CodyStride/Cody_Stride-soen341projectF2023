@@ -25,8 +25,8 @@ As a user, specifically a broker, I want access a menu displaying a list of offe
 As a user, specifically a buyer, I want to be able to use a mortgage calculator to find out my future costs.
 
 ### User Acceptance Flow
-1. User clicks on the mortgage calculator button found under the listing
-2. User inputs desired down payment, monthly interest rate, and number of payments over the loan's liftetime
+1. User goes to the mortgage calculator section
+2. User inputs property price, desired down payment, monthly interest rate, and number of payments over the loan's liftetime
 3. User clicks on calculate button
 4. The cost is shown to the user
 
@@ -36,7 +36,7 @@ As a user, specifically a buyer, I want to be able to use a mortgage calculator 
 - [ ] Unit and UI tests are implemented for every component and function
 
 ### Task Breakdown
-- [ ] Create a calculate mortgage button, which loads a window
+- [ ] Create a calculate mortgage section
 - [ ] Create input fields for users to add required data
 - [ ] Implement the formula for the mortgage
-- [ ] Have the mortgage change based on the property's price
+- [ ] Display mortgage calculation result

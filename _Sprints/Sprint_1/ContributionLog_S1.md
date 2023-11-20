@@ -20,7 +20,7 @@ Adrian worked on finding the user stories we'd be working on for the next sprint
 ## *Mahmoud*
 After Adrian completed the user stories, Mahmoud divided each of these into separate tasks that we'd have to focus on in future sprints. He had also spent lots of time considering how we'd build the overall website and what our approach for this project would be. During meeting minutes, he presented his ideas to the team and we ultimatey all had a general consensus as to how we'd go along in the development of the application.
 
-## *Micekl*
+## *Mickel*
 As the Scrum master, Mickel had to organize the meetings we'd have. Furthermore, he spent time writing in detail what we had discussed throughout the meetings. Mickel also spent a few hours researching on back end development and how we'd be able to use it for the context of our site.
 
 ## *Mustafa*
