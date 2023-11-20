@@ -20,8 +20,8 @@ export default function FeaturePage({ children }: { children: any }) {
             View Listings
           </Button>
           {/* <Button variant="outline" size="lg" component="a" href="/dashboard">
-          Brokers
-        </Button> */}
+            Brokers
+          </Button> */}
           <Button variant="outline" size="lg" component="a" href="/features/broker">
             Properties
           </Button>
