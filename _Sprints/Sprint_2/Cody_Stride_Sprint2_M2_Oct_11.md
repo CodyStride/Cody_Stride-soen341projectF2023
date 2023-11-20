@@ -2,7 +2,7 @@
 
 On the 11th of October, the team had a meeting that took 3 hours. We have discussed what are the main tasks to do for this sprint. The main goal of this meeting was to understand the work and tasks needed to build this section of the project.
 
-##Topics Discussed:
+## Topics Discussed:
 
 * ### What are the tasks that need to be finished for this sprint:
 We have brainstormed the most important tasks that we have to do for this sprint. These tasks consist of main tasks and sub-tasks. An example of a main task is to do the entire HTML of the sprint. A sub-task would be to write the meta description of the HTML file. 
