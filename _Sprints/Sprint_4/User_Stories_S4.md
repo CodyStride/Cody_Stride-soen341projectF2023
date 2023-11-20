@@ -39,3 +39,4 @@ As a user, specifically a buyer, I want to be able to use a mortgage calculator 
 - [ ] Create a calculate mortgage section
 - [ ] Create input fields for users to add required data
 - [ ] Implement the formula for the mortgage
+- [ ] Display mortgage calculation result
