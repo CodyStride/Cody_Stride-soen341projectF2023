@@ -2,7 +2,7 @@
 
 On the 18th of October, the team had a meeting that took 2 hours. We have discussed the flow of the tasks and the to-do and done tasks.
 
-##Topics Discussed:
+## Topics Discussed:
 
 * ### Checking with the team flow on the tasks :
 We have checked with each team member their flow with undertaking the tasks. We made sure that everyone was going at the right pace. We also started to discuss as to whether or not we'd continue to use the technologies we'd initially planned on using. After some time, we noticed that Django for example wasn't too easy to implement, mostly considering the experience level of everyone on the team. Furthermore, we had found out about React libraries, which woudl be of use to simpllify the creation of the front-end. React is a great technology, but it is unfortunately hard to utilize properly at the beginning stages.
