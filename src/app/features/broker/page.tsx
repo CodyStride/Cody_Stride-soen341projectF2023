@@ -3,6 +3,7 @@ import { PropertyTable } from '@/components/broker/PropertyTable';
 import { IPropertyData } from '@/types/property';
 import db from '@/lib/dbServer';
 import { cookies } from 'next/headers';
+import { APP_DATABASE } from '@/lib/dbNames';
 
 export const dynamic = 'auto',
   dynamicParams = true,
@@ -18,7 +19,7 @@ async function getEntries() {
   if (!user)
     throw 'User not authenticated';
 
-  const { items } = await db.client.collection('properties').getList<IPropertyData>(1, 25, {
+  const { items } = await db.client.collection(APP_DATABASE.PROPERTIES).getList<IPropertyData>(1, 25, {
     filter: `owner = "${user.id}"`
   })
 

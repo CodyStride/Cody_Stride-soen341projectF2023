@@ -29,7 +29,7 @@ export function SearchInput({ searchParams }: { searchParams: ISearchPropertyPar
     if (numBedrooms) params.set("bedrooms", numBedrooms.toString());
     if (numBathrooms) params.set("bathrooms", numBathrooms.toString());
 
-    router.replace(`${pathname}?${params.toString()}`);
+    router.push(`?${params.toString()}`);
   }, [propertyType, minPrice, maxPrice, numBedrooms, numBathrooms, router, pathname]);
 
   const resetSearch = () => {
@@ -38,7 +38,8 @@ export function SearchInput({ searchParams }: { searchParams: ISearchPropertyPar
     setMaxPrice(undefined);
     setNumBedrooms(undefined);
     setNumBathrooms(undefined);
-  
+    console.log(propertyType)
+
     router.replace(`${pathname}`);
   }
 
@@ -50,6 +51,7 @@ export function SearchInput({ searchParams }: { searchParams: ISearchPropertyPar
         placeholder="Type"
         value={propertyType}
         onChange={(value) => setPropertyType(value)}
+        data-cy="property-type"
       />
       <NumberInput
         hideControls
@@ -60,6 +62,7 @@ export function SearchInput({ searchParams }: { searchParams: ISearchPropertyPar
         value={minPrice}
         allowNegative={false}
         onChange={(value) => setMinPrice(value as number)}
+        data-cy="min-price"
       />
       <NumberInput
         hideControls
@@ -70,6 +73,7 @@ export function SearchInput({ searchParams }: { searchParams: ISearchPropertyPar
         value={maxPrice}
         allowNegative={false}
         onChange={(value) => setMaxPrice(value as number)}
+        data-cy="max-price"
       />
       <NumberInput
         label="Number of Bedrooms"
@@ -77,6 +81,7 @@ export function SearchInput({ searchParams }: { searchParams: ISearchPropertyPar
         value={numBedrooms}
         allowNegative={false}
         onChange={(value) => setNumBedrooms(value as number)}
+        data-cy="num-bedrooms"
       />
       <NumberInput
         label="Number of Bathrooms"
@@ -84,11 +89,12 @@ export function SearchInput({ searchParams }: { searchParams: ISearchPropertyPar
         value={numBathrooms}
         allowNegative={false}
         onChange={(value) => setNumBathrooms(value as number)}
+        data-cy="num-bathrooms"
       />
-      <Button onClick={startSearch}>
+      <Button onClick={startSearch} data-cy="search-button">
         <AiOutlineSearch />
       </Button>
-      <Button onClick={resetSearch}>
+      <Button onClick={resetSearch} data-cy="reset-button">
         Reset
       </Button>
     </Group>

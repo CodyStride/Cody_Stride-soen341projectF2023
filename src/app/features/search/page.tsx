@@ -2,6 +2,8 @@ import { Space } from "@mantine/core"
 import db from "@/lib/dbServer"
 import { SearchInput, SearchList } from "@/components/search"
 import { ISearchPropertyParams } from "@/types/property"
+import { Suspense, SuspenseList } from "react"
+import Loading from "./loading"
 
 export const dynamic = 'auto',
   dynamicParams = true,
@@ -60,6 +62,8 @@ export default async function SearchPage({ searchParams }: { searchParams: ISear
   return (<>
     <SearchInput searchParams={searchParams}/>
     <Space h="md" />
-    {data ? <SearchList data={data as any} /> : <></>}
+    <Suspense fallback={<Loading />}>
+      {data ? <SearchList data={data as any} /> : <></>}
+    </Suspense>
   </>)
 }
