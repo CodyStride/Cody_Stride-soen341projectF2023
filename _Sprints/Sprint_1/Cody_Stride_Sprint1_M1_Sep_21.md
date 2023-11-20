@@ -3,7 +3,7 @@
 On September 21st, the team had its first big meeting exceeding an hour. We discussed many topics about the project, but our main goal for this meeting was to get
 organized in order to ease the process of building the overall project.
 
-##Topics Discussed:
+## Topics Discussed:
 
 * ### What Programs we'll be Using for the Project:
 As you might've read on the README file, we chose 4 different frameworks to work with. We had already discussed previously that we'd use NodeJS and React to work 
