@@ -1,6 +1,6 @@
-'use client';
+"use client";
 
-import { Card, Text } from '@mantine/core';
+import { Card, Text } from "@mantine/core";
 
 export interface RequestCardProps {
   broker_name: string;
@@ -34,20 +34,46 @@ export function RequestCard({
   house_sale_date,
   house_occupancy_date,
 }: RequestCardProps) {
-  const itemStyle = { marginBottom: '4px' }; // Adjust the margin as needed
+  const itemStyle = { marginBottom: "4px" }; // Adjust the margin as needed
 
   return (
-    <Card shadow="sm" padding="lg" radius="md" withBorder style={{ width: 340, margin: 'auto' }}>
-      <div style={itemStyle}><Text>Broker: {broker_name}</Text></div>
-      <div style={itemStyle}><Text>License Number: {license_number}</Text></div>
-      <div style={itemStyle}><Text>Agency: {agency_title}</Text></div>
-      <div style={itemStyle}><Text>Buyer: {buyer_name}</Text></div>
-      <div style={itemStyle}><Text>Email: {buyer_email}</Text></div>
-      <div style={itemStyle}><Text>Address: {buyer_address}</Text></div>
-      <div style={itemStyle}><Text>House Address: {house_address}</Text></div>
-      <div style={itemStyle}><Text>House Price: ${house_price.toLocaleString()}</Text></div>
-      <div style={itemStyle}><Text>Sale Date: {house_sale_date}</Text></div>
-      <div style={itemStyle}><Text>Occupancy Date: {house_occupancy_date}</Text></div>
+    <Card
+      shadow="sm"
+      padding="lg"
+      radius="md"
+      withBorder
+      style={{ width: 340, margin: "auto" }}
+    >
+      <div style={itemStyle}>
+        <Text>Broker: {broker_name}</Text>
+      </div>
+      <div style={itemStyle}>
+        <Text>License Number: {license_number}</Text>
+      </div>
+      <div style={itemStyle}>
+        <Text>Agency: {agency_title}</Text>
+      </div>
+      <div style={itemStyle}>
+        <Text>Buyer: {buyer_name}</Text>
+      </div>
+      <div style={itemStyle}>
+        <Text>Email: {buyer_email}</Text>
+      </div>
+      <div style={itemStyle}>
+        <Text>Address: {buyer_address}</Text>
+      </div>
+      <div style={itemStyle}>
+        <Text>House Address: {house_address}</Text>
+      </div>
+      <div style={itemStyle}>
+        <Text>House Price: ${house_price.toLocaleString()}</Text>
+      </div>
+      <div style={itemStyle}>
+        <Text>Sale Date: {house_sale_date}</Text>
+      </div>
+      <div style={itemStyle}>
+        <Text>Occupancy Date: {house_occupancy_date}</Text>
+      </div>
     </Card>
   );
 }
@@ -58,14 +84,28 @@ export function VisitAppointmentCard({
   visit_address,
   property_id,
 }: VisitAppointmentProps) {
-  const itemStyle = { marginBottom: '4px' };
+  const itemStyle = { marginBottom: "4px" };
 
   return (
-    <Card shadow="sm" padding="lg" radius="md" withBorder style={{ width: 340, margin: 'auto' }}>
-      <div style={itemStyle}><Text>Visitor: {visitor_name}</Text></div>
-      <div style={itemStyle}><Text>Date: {visit_date}</Text></div>
-      <div style={itemStyle}><Text>Address: {visit_address}</Text></div>
-      <div style={itemStyle}><Text>Property id: {property_id}</Text></div>
+    <Card
+      shadow="sm"
+      padding="lg"
+      radius="md"
+      withBorder
+      style={{ width: 340, margin: "auto" }}
+    >
+      <div style={itemStyle}>
+        <Text>Visitor: {visitor_name}</Text>
+      </div>
+      <div style={itemStyle}>
+        <Text>Date: {visit_date}</Text>
+      </div>
+      <div style={itemStyle}>
+        <Text>Address: {visit_address}</Text>
+      </div>
+      <div style={itemStyle}>
+        <Text>Property id: {property_id}</Text>
+      </div>
     </Card>
   );
 }

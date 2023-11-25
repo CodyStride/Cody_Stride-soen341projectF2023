@@ -1,36 +1,27 @@
-'use client';
+import { AppLayout } from "@/components/AppLayout";
+import db from "@/lib/dbServer";
+import { cookies } from "next/headers";
 
-import { BiHomeAlt } from "react-icons/bi"
-import { Button, Group, AppShell, Burger } from '@mantine/core';
+export default async function FeaturePage({
+  children,
+}: {
+  children: JSX.Element;
+}) {
+  const cookieStore = cookies();
+  const user = await db.getUser(cookieStore);
 
-export default function FeaturePage({ children }: { children: any }) {
-  return (<AppShell
-    header={{ height: 60 }}
-    // navbar={{ width: 300, breakpoint: 'sm' }}
-    padding="md"
-  >
-    <AppShell.Header>
-      <Group h="100%" gap={0} >
-        <Group justify="center" pb="xl" px="md" >
-          <Burger hiddenFrom="sm" size="sm" />
-          <Button variant="outline" size="lg" component="a" href="/features">
-            <BiHomeAlt />
-          </Button>
-          <Button variant="outline" size="lg" component="a" href="/features/search">
-            View Listings
-          </Button>
-          {/* <Button variant="outline" size="lg" component="a" href="/dashboard">
-            Brokers
-          </Button> */}
-          <Button variant="outline" size="lg" component="a" href="/features/broker">
-            Properties
-          </Button>
-        </Group>
-      </Group>
-    </AppShell.Header>
+  // Get user initials
+  var userInit: string | undefined;
+  if (user) {
+    const words: string[] = user.name.split(" ");
 
-    {/* <AppShell.Navbar p="md">Navbar</AppShell.Navbar> */}
+    // Get the first letter of each word and concatenate them
+    words[0].charAt(0).toUpperCase();
+    words[words.length - 1].charAt(0).toUpperCase();
+    userInit = words
+      .map((word: string) => word.charAt(0).toUpperCase())
+      .join("");
+  }
 
-    <AppShell.Main>{children}</AppShell.Main>
-  </AppShell>)
+  return <AppLayout children={children} userInit={userInit} />;
 }

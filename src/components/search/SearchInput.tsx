@@ -1,47 +1,56 @@
-'use client';
+"use client";
 
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useState } from "react";
 import { Autocomplete, Button, Group, NumberInput } from "@mantine/core";
-import { AiOutlineSearch } from "react-icons/ai"
-import { usePathname, useRouter } from "next/navigation"
-import { ISearchPropertyParams } from '@/types/property';
+import { usePathname, useRouter } from "next/navigation";
+import { ISearchPropertyParams } from "@/types/property";
+import { IconSearch } from "@tabler/icons-react";
 
 const propertyOptions = ["Any", "House", "Apartment", "Condo"];
 
-export function SearchInput({ searchParams }: { searchParams: ISearchPropertyParams }) {
+// Example usage in a React component
+export function SearchInput({
+  searchParams,
+}: {
+  searchParams: ISearchPropertyParams;
+}) {
   // Define state variables for each input
-  const { bathrooms, bedrooms, max_price, min_price, type } = searchParams;
-  const [propertyType, setPropertyType] = useState(type);
-  const [minPrice, setMinPrice] = useState(min_price);
-  const [maxPrice, setMaxPrice] = useState(max_price);
-  const [numBedrooms, setNumBedrooms] = useState(bedrooms);
-  const [numBathrooms, setNumBathrooms] = useState(bathrooms);
+  const [filter, setPropertyFilter] = useState(searchParams);
+  const { bathrooms, bedrooms, max_price, min_price, type } = filter;
 
   const router = useRouter();
   const pathname = usePathname();
 
-  const startSearch = useCallback(() => {
-    const params = new URLSearchParams()
+  const handleInputChange = <K extends keyof ISearchPropertyParams>(
+    key: K,
+    value: ISearchPropertyParams[K]
+  ) => {
+    setPropertyFilter({ ...filter, [key]: value });
+  };
 
-    if (propertyType) params.set("type", propertyType);
-    if (minPrice) params.set("min_price", minPrice.toString());
-    if (maxPrice) params.set("max_price", maxPrice.toString());
-    if (numBedrooms) params.set("bedrooms", numBedrooms.toString());
-    if (numBathrooms) params.set("bathrooms", numBathrooms.toString());
+  const startSearch = useCallback(() => {
+    const params = new URLSearchParams();
+
+    if (type) params.set("type", type);
+    if (min_price) params.set("min_price", min_price.toString());
+    if (max_price) params.set("max_price", max_price.toString());
+    if (bedrooms) params.set("bedrooms", bedrooms.toString());
+    if (bathrooms) params.set("bathrooms", bathrooms.toString());
 
     router.push(`?${params.toString()}`);
-  }, [propertyType, minPrice, maxPrice, numBedrooms, numBathrooms, router, pathname]);
+  }, [bathrooms, bedrooms, max_price, min_price, type, router, pathname]);
 
   const resetSearch = () => {
-    setPropertyType(undefined);
-    setMinPrice(undefined);
-    setMaxPrice(undefined);
-    setNumBedrooms(undefined);
-    setNumBathrooms(undefined);
-    console.log(propertyType)
+    setPropertyFilter({
+      bathrooms: "",
+      bedrooms: "",
+      max_price: "",
+      min_price: "",
+      type: "",
+    });
 
     router.replace(`${pathname}`);
-  }
+  };
 
   return (
     <Group>
@@ -49,8 +58,8 @@ export function SearchInput({ searchParams }: { searchParams: ISearchPropertyPar
         label="Property Type"
         data={propertyOptions}
         placeholder="Type"
-        value={propertyType}
-        onChange={(value) => setPropertyType(value)}
+        value={type}
+        onChange={(value) => handleInputChange("type", value)}
         data-cy="property-type"
       />
       <NumberInput
@@ -59,9 +68,9 @@ export function SearchInput({ searchParams }: { searchParams: ISearchPropertyPar
         placeholder="Price"
         thousandSeparator=","
         prefix="$ "
-        value={minPrice}
+        value={min_price}
         allowNegative={false}
-        onChange={(value) => setMinPrice(value as number)}
+        onChange={(value) => handleInputChange("min_price", value)}
         data-cy="min-price"
       />
       <NumberInput
@@ -70,29 +79,29 @@ export function SearchInput({ searchParams }: { searchParams: ISearchPropertyPar
         placeholder="Price"
         thousandSeparator=","
         prefix="$ "
-        value={maxPrice}
+        value={max_price}
         allowNegative={false}
-        onChange={(value) => setMaxPrice(value as number)}
+        onChange={(value) => handleInputChange("max_price", value)}
         data-cy="max-price"
       />
       <NumberInput
         label="Number of Bedrooms"
         placeholder="Count"
-        value={numBedrooms}
+        value={bedrooms}
         allowNegative={false}
-        onChange={(value) => setNumBedrooms(value as number)}
+        onChange={(value) => handleInputChange("bedrooms", value)}
         data-cy="num-bedrooms"
       />
       <NumberInput
         label="Number of Bathrooms"
         placeholder="Count"
-        value={numBathrooms}
+        value={bathrooms}
         allowNegative={false}
-        onChange={(value) => setNumBathrooms(value as number)}
+        onChange={(value) => handleInputChange("bathrooms", value)}
         data-cy="num-bathrooms"
       />
       <Button onClick={startSearch} data-cy="search-button">
-        <AiOutlineSearch />
+        <IconSearch />
       </Button>
       <Button onClick={resetSearch} data-cy="reset-button">
         Reset

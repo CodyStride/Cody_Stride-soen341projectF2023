@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { IPropertyData } from "@/types/property";
 import db from "@/lib/dbServer";
 import { cookies } from "next/headers";
+import { APP_DATABASE } from "@/lib/dbNames";
 
 export async function POST(request: any) {
   try {
@@ -20,7 +21,7 @@ export async function POST(request: any) {
       location,
     }: IPropertyData = await request.json();
 
-    await db.client.collection("properties").create({
+    await db.client.collection(APP_DATABASE.PROPERTIES).create({
       type,
       owner: user.id,
       bathrooms,
@@ -41,7 +42,7 @@ export async function POST(request: any) {
         headers: {
           "Content-Type": "application/json",
         },
-      }
+      },
     );
   }
 }
@@ -63,7 +64,7 @@ export async function PUT(request: any) {
       location,
     }: IPropertyData = await request.json();
 
-    await db.client.collection("properties").update(id, {
+    await db.client.collection(APP_DATABASE.PROPERTIES).update(id, {
       type,
       owner: user.id,
       bathrooms,
@@ -83,7 +84,7 @@ export async function PUT(request: any) {
         headers: {
           "Content-Type": "application/json",
         },
-      }
+      },
     );
   }
 }
@@ -96,13 +97,13 @@ export async function DELETE(request: any) {
     const user = await db.getUser(cookieStore);
 
     if (!user) throw "User not authenticated";
-    
+
     const id = request.nextUrl.searchParams.get("id");
-  
-    await db.client.collection("properties").delete(id);
-  
+
+    await db.client.collection(APP_DATABASE.PROPERTIES).delete(id);
+
     return NextResponse.json({ message: "Topic deleted" }, { status: 200 });
-  } catch(err: any) {
+  } catch (err: any) {
     return new Response(
       JSON.stringify({ error: err.message || err.toString() }),
       {
@@ -110,7 +111,7 @@ export async function DELETE(request: any) {
         headers: {
           "Content-Type": "application/json",
         },
-      }
+      },
     );
   }
 }

@@ -18,7 +18,8 @@ export async function middleware(request: NextRequest) {
   // Keep search feature as not required to login
   if (
     request.nextUrl.pathname &&
-    !request.nextUrl.pathname.startsWith("/features/broker")
+    (request.nextUrl.pathname.startsWith("/features/search") ||
+      request.nextUrl.pathname.endsWith("/features"))
   ) {
     return NextResponse.next();
   }

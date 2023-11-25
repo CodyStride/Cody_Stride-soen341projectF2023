@@ -31,7 +31,7 @@ export async function POST(request: any) {
 
     const [datePart, timePart] = date.split("T");
     const customFormat = `${datePart} ${timePart.slice(0, -1)}`;
-    console.log(customFormat)
+    console.log(customFormat);
 
     await db.client.collection(APP_DATABASE.REQUESTS_VISIT).create({
       sender: user.id,
@@ -53,7 +53,7 @@ export async function POST(request: any) {
         headers: {
           "Content-Type": "application/json",
         },
-      }
+      },
     );
   }
 }

@@ -7,9 +7,7 @@ import {
   Title,
   Text,
   Anchor,
-  Combobox,
 } from "@mantine/core";
-import { Input, InputBase, useCombobox } from "@mantine/core";
 import { useForm } from "@mantine/form";
 import { useState } from "react";
 import classes from "../AuthenticationImage.module.css";
@@ -41,7 +39,9 @@ function SignUpPage() {
       password: (value) =>
         value.length < 2 ? "Name must have at least 2 letters" : null,
       type: (value) => {
-        return Object.values(USER_TYPES).includes(value as USER_TYPES) ? null : "Invalid"
+        return Object.values(USER_TYPES).includes(value as USER_TYPES)
+          ? null
+          : "Invalid";
       },
     },
   });
@@ -95,8 +95,8 @@ function SignUpPage() {
             {...form.getInputProps("password")}
           />
           <TextInput
-            label="Type"
-            placeholder="User type (buyer, renter, broker, system admin)"
+            label="User Type"
+            placeholder="buyer, renter, broker"
             size="md"
             {...form.getInputProps("type")}
           />

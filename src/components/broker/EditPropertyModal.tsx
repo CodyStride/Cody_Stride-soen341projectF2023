@@ -1,11 +1,17 @@
-'use client';
+"use client";
 
-import { Dispatch, SetStateAction, useState } from 'react';
-import { useDisclosure } from '@mantine/hooks';
-import { Modal, Button, TextInput, NumberInput, LoadingOverlay } from '@mantine/core';
-import { notifications } from '@mantine/notifications';
-import { IPropertyData } from '@/types/property';
-import { useRouter } from 'next/navigation';
+import { Dispatch, SetStateAction, useState } from "react";
+import { useDisclosure } from "@mantine/hooks";
+import {
+  Modal,
+  Button,
+  TextInput,
+  NumberInput,
+  LoadingOverlay,
+} from "@mantine/core";
+import { notifications } from "@mantine/notifications";
+import { IPropertyData } from "@/types/property";
+import { useRouter } from "next/navigation";
 
 export interface EditPropertyModalProps {
   opened: boolean;
@@ -14,10 +20,15 @@ export interface EditPropertyModalProps {
   setProperty: Dispatch<SetStateAction<IPropertyData | undefined>>;
 }
 
-export function EditPropertyModal({ data, setProperty, opened, closeModal }: EditPropertyModalProps) {
+export function EditPropertyModal({
+  data,
+  setProperty,
+  opened,
+  closeModal,
+}: EditPropertyModalProps) {
   // Manage load screen
   const [visible, { open: load, close: ready }] = useDisclosure(false);
-  
+
   // Handle form input changes
   const handleInputChange = (key: any, value: any) => {
     setProperty({ ...data, [key]: value });
@@ -30,8 +41,8 @@ export function EditPropertyModal({ data, setProperty, opened, closeModal }: Edi
   const handleFormSubmit = async (e: any) => {
     e.preventDefault();
 
-    console.log('editing')
-    load()
+    console.log("editing");
+    load();
 
     try {
       const res = await fetch(`/api/broker`, {
@@ -46,15 +57,15 @@ export function EditPropertyModal({ data, setProperty, opened, closeModal }: Edi
         throw new Error("Failed to update topic");
       }
 
-      ready()
-      closeModal()
+      ready();
+      closeModal();
       router.refresh();
 
       notifications.show({
-        title: 'Property Sucessfully Edited',
-        message: 'Hey there, your code is awesome! 🤥',
-        color: 'green',
-      })
+        title: "Property Sucessfully Edited",
+        message: "Hey there, your code is awesome! 🤥",
+        color: "green",
+      });
     } catch (error) {
       console.log(error);
     }
@@ -63,12 +74,18 @@ export function EditPropertyModal({ data, setProperty, opened, closeModal }: Edi
   return (
     <>
       <Modal opened={opened} onClose={closeModal} title="Edit Property">
-        <LoadingOverlay visible={visible} zIndex={1000} overlayProps={{ radius: "sm", blur: 2 }} />
+        <LoadingOverlay
+          visible={visible}
+          zIndex={1000}
+          overlayProps={{ radius: "sm", blur: 2 }}
+        />
         {/* Form content */}
         <TextInput
           label="Property Type"
           value={data.type}
-          onChange={(event) => handleInputChange('type', event.currentTarget.value)}
+          onChange={(event) =>
+            handleInputChange("type", event.currentTarget.value)
+          }
         />
         <NumberInput
           hideControls
@@ -77,34 +94,40 @@ export function EditPropertyModal({ data, setProperty, opened, closeModal }: Edi
           prefix="$ "
           allowNegative={false}
           value={data.price}
-          onChange={(value) => handleInputChange('price', value)}
+          onChange={(value) => handleInputChange("price", value)}
         />
         <TextInput
           label="Description"
           value={data.description}
-          onChange={(event) => handleInputChange('description', event.currentTarget.value)}
+          onChange={(event) =>
+            handleInputChange("description", event.currentTarget.value)
+          }
         />
         <TextInput
           label="Location"
           value={data.location}
-          onChange={(event) => handleInputChange('location', event.currentTarget.value)}
+          onChange={(event) =>
+            handleInputChange("location", event.currentTarget.value)
+          }
         />
         <NumberInput
           label="Bedrooms"
           value={data.bedrooms}
           allowNegative={false}
-          onChange={(value) => handleInputChange('bedrooms', value)}
+          onChange={(value) => handleInputChange("bedrooms", value)}
         />
         <NumberInput
           label="Bathrooms"
           value={data.bathrooms}
           allowNegative={false}
-          onChange={(value) => handleInputChange('bathrooms', value)}
+          onChange={(value) => handleInputChange("bathrooms", value)}
         />
         <TextInput
           label="Image URL"
           value={data.image}
-          onChange={(event) => handleInputChange('image', event.currentTarget.value)}
+          onChange={(event) =>
+            handleInputChange("image", event.currentTarget.value)
+          }
         />
         <Button onClick={handleFormSubmit}>Submit</Button>
       </Modal>

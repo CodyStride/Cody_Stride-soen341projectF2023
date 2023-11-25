@@ -1,1 +1,1 @@
-export * from './ColorSchemeToggle'
+export * from "./ColorSchemeToggle";
