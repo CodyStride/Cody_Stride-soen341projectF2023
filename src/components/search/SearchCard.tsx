@@ -20,7 +20,7 @@ import classes from "./SeachCard.module.css";
 
 export interface SearchCardProps {
   data: IPropertyData;
-  hasLogin: boolean;
+  hasLogin?: boolean;
 }
 
 const defaultPage =
