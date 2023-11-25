@@ -15,7 +15,7 @@ export function Welcome() {
           Real Estate
         </Text>
       </Title>
-      <Text color="dimmed" ta="center" size="lg" maw={580} mx="auto" mt="xl">
+      <Text c="dimmed" ta="center" size="lg" maw={580} mx="auto" mt="xl">
         Find your dream home with us. Browse through a wide range of properties,
         from cozy apartments to spacious villas.
       </Text>

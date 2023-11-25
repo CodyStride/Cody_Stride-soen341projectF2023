@@ -1,5 +1,5 @@
-import { LoadingOverlay } from "@mantine/core";
+import { Box, LoadingOverlay } from "@mantine/core";
 
 export default function Loading() {
-  return <LoadingOverlay data-cy="loading-overlay" visible/>
+  return (<LoadingOverlay data-cy="loading-overlay" visible />)
 }

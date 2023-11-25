@@ -1,14 +1,15 @@
-'use client'
+"use client";
 
 import React from "react";
 import { MantineProvider, ColorSchemeScript } from "@mantine/core";
 import { theme } from "../theme";
-import { Notifications } from '@mantine/notifications';
-import { ModalsProvider } from '@mantine/modals';
+import { Notifications } from "@mantine/notifications";
+import { ModalsProvider } from "@mantine/modals";
 
 import "@mantine/core/styles.css";
-import '@mantine/notifications/styles.css'
-import '@mantine/dates/styles.css';
+import 'mantine-datatable/styles.layer.css';
+import "@mantine/notifications/styles.css";
+import "@mantine/dates/styles.css";
 
 export default function RootLayout({ children }: { children: any }) {
   return (

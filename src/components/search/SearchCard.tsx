@@ -1,34 +1,54 @@
-'use client';
+"use client";
 
-import { Badge, Button, Card, Divider, Group, Image, Space, Text } from "@mantine/core";
+import {
+  Badge,
+  Button,
+  Card,
+  Divider,
+  Group,
+  Image,
+  Space,
+  Text,
+} from "@mantine/core";
 import { modals } from "@mantine/modals";
-import { PiBed, PiToilet, PiGlobe } from "react-icons/pi"
 import { RequestModal } from "./RequestModal";
 import { IPropertyData } from "@/types/property";
+import { FavoriteButton } from "./FavoriteButton";
+import { IconBath, IconBed, IconGlobe } from "@tabler/icons-react";
+
+import classes from "./SeachCard.module.css";
 
 export interface SearchCardProps {
-  data: IPropertyData
+  data: IPropertyData;
+  hasLogin: boolean;
 }
 
-const defaultPage = "https://images.unsplash.com/photo-1527004013197-933c4bb611b3?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=720&q=80"
+const defaultPage =
+  "https://images.unsplash.com/photo-1527004013197-933c4bb611b3?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=720&q=80";
 
-export function SearchCard({ data }: SearchCardProps) {
-  const { id, owner, price, description, image, bedrooms, bathrooms, location } = data;
+export function SearchCard({ data, hasLogin }: SearchCardProps) {
+  const {
+    id,
+    owner,
+    price,
+    image,
+    bedrooms,
+    bathrooms,
+    location,
+  } = data;
 
-  const formattedPrice = price.toLocaleString('en-US', {
-    style: 'currency',
-    currency: 'CAD',
+  const formattedPrice = price.toLocaleString("en-US", {
+    style: "currency",
+    currency: "CAD",
     maximumFractionDigits: 0,
   });
 
   const requestVisit = () => {
     modals.open({
-      title: 'Request Visit Form',
-      children: (
-        <RequestModal propertyId={id} owner={owner} />
-      ),
-    })
-  }
+      title: "Request Visit Form",
+      children: <RequestModal propertyId={id} owner={owner} />,
+    });
+  };
 
   return (
     <Card
@@ -40,53 +60,76 @@ export function SearchCard({ data }: SearchCardProps) {
       className="search-card"
     >
       <Card.Section>
-        <Image
-          src={image ? image : defaultPage}
-          height={160}
-          alt="House"
-        />
+        <Image src={image ? image : defaultPage} height={160} alt="House" />
+        <Badge className={classes.rating} color="pink">
+          On Sale
+        </Badge>
       </Card.Section>
 
       <Group justify="space-between" mt="md" mb="xs">
-        <Text fw={500}>{formattedPrice}</Text>
-        <Badge color="pink" variant="light">
-          On Sale
-        </Badge>
+        <Text size="lg" fw={700}>
+          {formattedPrice}
+        </Text>
+        {hasLogin && (
+          <FavoriteButton propertyId={id} isFavorite={data.isFavorite} />
+        )}
       </Group>
 
-      <Text size="sm" c="dimmed">
-        {description}
-      </Text>
+      <Group justify="space-between" mt="md" mb="xs">
+        <Text fw={500}>{location || "??"}</Text>
+      </Group>
+
+      <Space h="xs" />
 
       <Divider />
 
-      <div style={{ display: 'flex' }}>
-        <Text size="sm" c="dimmed">
-          <PiBed />
-          {bedrooms}
-        </Text>
-
-        <Space w="md" />
-
-        <Text size="sm" c="dimmed">
-          <PiToilet />
-          {bathrooms}
-        </Text>
-      </div>
-
-      <Text size="sm" c="dimmed">
-        <PiGlobe />
-        {location || '??'}
-      </Text>
+      <Space h="xs" />
 
       <Group>
-        <Button variant="light" color="blue" fullWidth mt="md" radius="md" onClick={requestVisit}>
+        <div style={{ display: "flex" }}>
+          <IconBed />
+          <Space w="xs" />
+          <Text size="sm" c="dimmed">
+            {bedrooms} bedroom{bedrooms > 1 && "s"}
+          </Text>
+        </div>
+
+        <Space w="xs" />
+
+        <div style={{ display: "flex" }}>
+          <IconBath />
+          <Space w="xs" />
+          <Text size="sm" c="dimmed">
+            {bathrooms} bathroom{bathrooms > 1 && "s"}
+          </Text>
+        </div>
+      </Group>
+
+      <Group gap={8} mr={0}>
+        <Button
+          variant="light"
+          color="blue"
+          fullWidth
+          mt="md"
+          radius="md"
+          onClick={(hasLogin && requestVisit) || undefined}
+          component={(!hasLogin && "a") || "button"}
+          href={(!hasLogin && "/auth/login") || ""}
+        >
           Request Visit
         </Button>
-        <Button variant="light" fullWidth mt="md" radius="md" >
+        <Button
+          variant="light"
+          fullWidth
+          mt="md"
+          radius="md"
+          onClick={(hasLogin && requestVisit) || undefined}
+          component={(!hasLogin && "a") || "button"}
+          href={(!hasLogin && "/auth/login") || ""}
+        >
           Send Offer
         </Button>
       </Group>
     </Card>
-  )
+  );
 }

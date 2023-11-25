@@ -1,6 +1,6 @@
-'use client';
+"use client";
 
-import { useRouter } from 'next/navigation';
+import { useRouter } from "next/navigation";
 import {
   Paper,
   TextInput,
@@ -9,10 +9,10 @@ import {
   Title,
   Text,
   Anchor,
-} from '@mantine/core';
-import classes from '../AuthenticationImage.module.css';
-import { useForm } from '@mantine/form';
-import { notifications } from '@mantine/notifications';
+} from "@mantine/core";
+import classes from "../AuthenticationImage.module.css";
+import { useForm } from "@mantine/form";
+import { notifications } from "@mantine/notifications";
 
 interface IFormLogin {
   email: string;
@@ -24,39 +24,41 @@ function LoginPage() {
 
   const form = useForm({
     initialValues: {
-      email: '',
-      password: '',
+      email: "",
+      password: "",
     },
 
     validate: {
-      email: (value) => (/^\S+@\S+$/.test(value) ? null : 'Invalid email'),
-      password: (value) => (value.length < 8 ? 'Password must have at least 8 characters' : null)
+      email: (value) => (/^\S+@\S+$/.test(value) ? null : "Invalid email"),
+      password: (value) =>
+        value.length < 8 ? "Password must have at least 8 characters" : null,
     },
   });
 
   const onSubmit = async ({ email, password }: IFormLogin) => {
     try {
       const form = { email, password };
-      const response = await fetch('/api/auth/login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(form)
+      const response = await fetch("/api/auth/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
       });
       if (!response.ok) {
-        throw 'Failed to authenticate user';
-      };
+        throw "Failed to authenticate user";
+      }
       const data = await response.json();
       if (data?.token) {
-        route.push('/features');
+        route.push("/features");
+        route.refresh();
       } else {
-        throw 'Failed to authenticate user';
+        throw "Failed to authenticate user";
       }
     } catch (err) {
       notifications.show({
-        color: 'red',
-        title: 'Authentication Error',
-        message: 'Unable to authenticate user.'
-      })
+        color: "red",
+        title: "Authentication Error",
+        message: "Unable to authenticate user.",
+      });
     }
   };
 
@@ -68,22 +70,33 @@ function LoginPage() {
         </Title>
 
         <form onSubmit={form.onSubmit(onSubmit)}>
-          <TextInput label="Email address" placeholder="hello@gmail.com" size="md" {...form.getInputProps('email')} />
-          <PasswordInput label="Password" placeholder="Your password" mt="md" size="md" {...form.getInputProps('password')} />
+          <TextInput
+            label="Email address"
+            placeholder="hello@gmail.com"
+            size="md"
+            {...form.getInputProps("email")}
+          />
+          <PasswordInput
+            label="Password"
+            placeholder="Your password"
+            mt="md"
+            size="md"
+            {...form.getInputProps("password")}
+          />
           <Button fullWidth mt="xl" size="md" type="submit">
             Login
           </Button>
         </form>
 
         <Text ta="center" mt="md">
-          Don&apos;t have an account?{' '}
-          <Anchor<'a'> href="/auth/signup" fw={700}>
+          Don&apos;t have an account?{" "}
+          <Anchor<"a"> href="/auth/signup" fw={700}>
             Register
           </Anchor>
         </Text>
       </Paper>
     </div>
-  )
+  );
 }
 
-export default LoginPage
+export default LoginPage;

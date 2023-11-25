@@ -1,56 +1,74 @@
-'use client';
+"use client";
 
 import { IPropertyData } from "@/types/property";
 import { ActionIcon, Box, Group, NumberFormatter } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { DataTable } from "mantine-datatable";
-import { AiOutlineEdit, AiOutlineDelete } from 'react-icons/ai'
 import { EditPropertyModal } from "./EditPropertyModal";
 import { useState } from "react";
 import { DeletePropertyModal } from "./DeletePropertyModal";
+import { IconEdit, IconTrash } from "@tabler/icons-react";
 
 export function PropertyTable({ data }: { data: IPropertyData[] }) {
-  const [openedEdit, { open: openEdit, close: closeEdit }] = useDisclosure(false);
-  const [openedDelete, { open: openDelete, close: closeDelete }] = useDisclosure(false);
+  const [openedEdit, { open: openEdit, close: closeEdit }] =
+    useDisclosure(false);
+  const [openedDelete, { open: openDelete, close: closeDelete }] =
+    useDisclosure(false);
   const [propertyData, setPropertyData] = useState<IPropertyData>();
 
   const handleEdit = (data: IPropertyData) => {
-    console.log(data)
+    console.log(data);
     setPropertyData(data);
     openEdit();
-  }
+  };
 
   const handleDelete = (data: IPropertyData) => {
-    console.log(data)
+    console.log(data);
     setPropertyData(data);
     openDelete();
-  }
+  };
 
+  console.log(data)
   return (
     <>
-      {propertyData && <EditPropertyModal setProperty={setPropertyData} data={propertyData} closeModal={closeEdit} opened={openedEdit} />}
-      {propertyData && <DeletePropertyModal propertyId={propertyData.id} closeModal={closeDelete} opened={openedDelete} />}
+      {propertyData && (
+        <EditPropertyModal
+          setProperty={setPropertyData}
+          data={propertyData}
+          closeModal={closeEdit}
+          opened={openedEdit}
+        />
+      )}
+      {propertyData && (
+        <DeletePropertyModal
+          propertyId={propertyData.id}
+          closeModal={closeDelete}
+          opened={openedDelete}
+        />
+      )}
       <DataTable
         striped
         highlightOnHover
         withTableBorder
         withColumnBorders
         columns={[
-          { accessor: 'type', title: 'Type' },
+          { accessor: "type", title: "Type" },
           {
-            accessor: 'price', title: 'Price (CAD $)', render: (record) => (
+            accessor: "price",
+            title: "Price (CAD $)",
+            render: (record) => (
               <NumberFormatter value={record.price} thousandSeparator />
-            )
+            ),
           },
-          { accessor: 'description', title: 'Description' },
-          { accessor: 'location', title: 'Location' },
-          { accessor: 'bedrooms', title: 'Bedrooms' },
-          { accessor: 'bathrooms', title: 'Bathrooms' },
-          { accessor: 'image', title: 'Image' },
+          { accessor: "description", title: "Description" },
+          { accessor: "location", title: "Location" },
+          { accessor: "bedrooms", title: "Bedrooms" },
+          { accessor: "bathrooms", title: "Bathrooms" },
+          { accessor: "image", title: "Image" },
           {
-            accessor: 'actions',
+            accessor: "actions",
             title: <Box mr={6}>Row actions</Box>,
-            textAlign: 'right',
+            textAlign: "right",
             render: (data) => (
               <Group gap={4} justify="right" wrap="nowrap">
                 <ActionIcon
@@ -59,7 +77,7 @@ export function PropertyTable({ data }: { data: IPropertyData[] }) {
                   color="blue"
                   onClick={() => handleEdit(data)}
                 >
-                  <AiOutlineEdit size={16} />
+                  <IconEdit size={16} />
                 </ActionIcon>
                 <ActionIcon
                   size="sm"
@@ -67,9 +85,9 @@ export function PropertyTable({ data }: { data: IPropertyData[] }) {
                   color="red"
                   onClick={() => handleDelete(data)}
                 >
-                  <AiOutlineDelete size={16} />
+                  <IconTrash size={16} />
                 </ActionIcon>
-              </Group >
+              </Group>
             ),
           },
         ]}
@@ -79,4 +97,4 @@ export function PropertyTable({ data }: { data: IPropertyData[] }) {
   );
 }
 
-export default PropertyTable
+export default PropertyTable;

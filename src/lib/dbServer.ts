@@ -7,10 +7,10 @@ export const POCKET_BASE_URL = "https://cody-stridy.pockethost.io";
 
 export class DatabaseServer {
   client: PocketBase;
-  clientId?: string;
 
   constructor() {
     this.client = new PocketBase(POCKET_BASE_URL);
+    this.client.autoCancellation(false);
   }
 
   async authenticate(email: string, password: string) {
@@ -18,11 +18,13 @@ export class DatabaseServer {
       const result = await this.client
         .collection(APP_DATABASE.USERS)
         .authWithPassword(email, password);
+
       console.log("authenticate result:", result);
+
       if (!result?.token) {
         throw new Error("Invalid email or password");
       }
-      this.clientId = result.record.id;
+
       return result;
     } catch (err) {
       console.error(err);
@@ -30,16 +32,18 @@ export class DatabaseServer {
     }
   }
 
-  async register(payload: ISignUpPayload) {
+  async register<T>(payload: ISignUpPayload) {
     const { email, password, type, name } = payload;
     try {
-      const result = await this.client.collection(APP_DATABASE.USERS).create({
-        email,
-        password,
-        passwordConfirm: password,
-        type,
-        name,
-      });
+      const result = await this.client
+        .collection(APP_DATABASE.USERS)
+        .create<T>({
+          email,
+          password,
+          passwordConfirm: password,
+          type,
+          name,
+        });
 
       return result;
     } catch (err) {
