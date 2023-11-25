@@ -3,9 +3,21 @@ on:
   push:
     branches:
       - main
+    paths-ignore:
+      - '_Sprint'
+      - 'README.md'
+  pull_request:
+    branches:
+      - main
+    paths-ignore:
+      - '_Sprint'
+      - 'README.md'
 jobs:
   cypress-run:
     runs-on: ubuntu-latest
+    # Prevent from running twice
+    if: github.event_name == 'pull_request' || (github.event_name == 'push' && github.ref == 'refs/heads/main')
+    
     # Runs tests in parallel with matrix strategy https://docs.cypress.io/guides/guides/parallelization
     # https://docs.github.com/en/actions/using-jobs/using-a-matrix-for-your-jobs
     # Also see warning here https://github.com/cypress-io/github-action#parallel
