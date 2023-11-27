@@ -5,14 +5,13 @@ import { ActionIcon, Autocomplete, Button, Group, NumberInput, TextInput } from 
 import { AiOutlineSearch } from "react-icons/ai"
 import { usePathname, useRouter } from "next/navigation"
 
-const brokerOptions = ["Name", "License", "Agency", "User"];
+const brokerOptions = ["Name", "License", "Agency"];
 
 export function SearchInputBrokers() {
   // Define state variables for each input
   const [name, setName] = useState("Any");
   const [license, setLicense] = useState("Any");
   const [agency, setAgency] = useState("Any");
-  const [user, setUser] = useState("Any");
 
   const router = useRouter();
   const pathname = usePathname();
@@ -29,12 +28,9 @@ export function SearchInputBrokers() {
     if (agency !== "Any") {
       params.set("agency", agency);
     }
-    if (user !== "Any") {
-        params.set("user", user);
-    }
 
     router.replace(`${pathname}?${params.toString()}`);
-  }, [name, license, agency, user, router, pathname]);
+  }, [name, license, agency, router, pathname]);
 
   return (
     <Group>
@@ -58,13 +54,7 @@ export function SearchInputBrokers() {
         value={agency}
         onChange={(value) => setAgency(value)}
       />
-
-      <Autocomplete
-        label="User Broker"
-        placeholder="User"
-        value={user}
-        onChange={(value) => setLicense(value)}
-      />
+      
       <Button onClick={startSearch}>
         <AiOutlineSearch />
       </Button>
