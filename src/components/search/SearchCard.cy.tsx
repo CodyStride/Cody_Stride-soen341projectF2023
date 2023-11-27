@@ -18,6 +18,19 @@ describe("SearchCard Component", () => {
       bathrooms: 2,
       location: "Cityville",
       type: "House",
+      expand: {
+        owner: {
+          id: '12345678',
+          username: 'john_doe',
+          email: 'john.doe@example.com',
+          name: 'John Doe',
+          avatar: 'https://example.com/avatar/john_doe.png',
+          type: 'user',
+          created: '2022-01-15T12:30:00.000Z',
+          updated: '2022-11-30T08:45:00.000Z',
+          token: 'abc123def456',
+        }
+      }
     };
 
     // Mount the component

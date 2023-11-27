@@ -47,18 +47,6 @@ export interface ISearchPropertyParams {
   bathrooms?: number | string;
 }
 
-export interface IBrokerData {
-  id: string;
-  license?: string;
-  agency?: string;
-}
-
-export enum OFFER_STATUS {
-  PENDING = "pending",
-  ACCEPTED = "accepted",
-  REJECTED = "rejected",
-}
-
 export interface UserAuthModel {
   id: string;
   username: string;
@@ -75,4 +63,22 @@ export interface IBrokerData {
   id: string
   license?: string
   agency?: string
+}
+
+export enum OFFER_STATUS {
+  PENDING = 'pending',
+  ACCEPTED = 'accepted',
+  REJECTED = 'rejected',
+}
+
+export interface UserAuthModel {
+  id: string;
+  username: string;
+  email: string;
+  name: string;
+  avatar?: string;
+  type: string;
+  created: string;
+  updated: string;
+  token?: string;
 }
