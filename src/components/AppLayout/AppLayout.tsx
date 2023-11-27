@@ -14,7 +14,6 @@ export function AppLayout({ children, user }: AppLayoutProps) {
   var userInit: string | undefined;
 
   if (user) {
-    console.log(user)
     const words: string[] = user.name.split(" ");
 
     // Get the first letter of each word and concatenate them

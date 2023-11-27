@@ -1,12 +1,12 @@
 "use client";
 
 import { AppShell, Space } from "@mantine/core";
-import { IPropertyData, ISearchPropertyParams, UserAuthModel } from "@/types/property";
+import { IPropertyDataExp, ISearchPropertyParams, UserAuthModel } from "@/types/property";
 import { SearchInput, SearchList } from "@/components/search";
 
 export interface SearchPageProps {
   searchParams: ISearchPropertyParams;
-  data: IPropertyData[];
+  data: IPropertyDataExp[];
   user?: UserAuthModel;
 }
 
