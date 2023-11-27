@@ -27,8 +27,8 @@ export function SubmitOfferModal({ data }: SubmitOfferProps) {
   const form = useForm({
     initialValues: {
       message: '',
-      amount: price,
-    } as IFormOffer,
+    amount: price,
+  } as IFormOffer,
 
     validate: {
       amount: (amount) => (amount > price * 0.75) ? null : "Offer should at least be 75% of orignal price"
@@ -82,7 +82,7 @@ export function SubmitOfferModal({ data }: SubmitOfferProps) {
             Contact information
           </Text>
 
-          <ContactIconsList />
+          {/* <ContactIconsList /> */}
         </div>
         <form className={classes.form} onSubmit={form.onSubmit(onSubmit)}>
           <Text fz="lg" fw={700} className={classes.title}>

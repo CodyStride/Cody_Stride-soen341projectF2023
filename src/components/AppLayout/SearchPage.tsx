@@ -18,7 +18,7 @@ export function SearchApp({ data, searchParams, user }: SearchPageProps) {
     <AppShell.Main>
       <SearchInput searchParams={searchParams} />
       <Space h="md" />
-      {data ? <SearchList data={data} hasFavorite={!!user} /> : <></>}
+      {data ? <SearchList data={data} user={user} /> : <></>}
     </AppShell.Main>
   </>
   )
