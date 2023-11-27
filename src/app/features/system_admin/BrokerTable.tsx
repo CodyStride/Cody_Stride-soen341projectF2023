@@ -1,13 +1,13 @@
 'use client';
 
-import { IBrokerData } from "@/types/property";
+import { IBrokerData } from "@/types/broker";
 import { ActionIcon, Box, Group } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { DataTable } from "mantine-datatable";
+import { AiOutlineEye, AiOutlineEdit, AiOutlineDelete } from 'react-icons/ai'
 import { EditBroker } from "./EditBroker";
 import { useState } from "react";
 import { DeleteBroker } from "./DeleteBroker";
-import { IconEdit, IconTrash } from "@tabler/icons-react";
 
 export function BrokerTable({ data }: { data: IBrokerData[] }) {
   const [openedEdit, { open: openEdit, close: closeEdit }] = useDisclosure(false);
@@ -22,10 +22,9 @@ export function BrokerTable({ data }: { data: IBrokerData[] }) {
 
   const handleDelete = (data: IBrokerData) => {
     console.log(data)
+    setBrokerData(data);
     openDelete();
   }
-
-  console.log(data);
 
   return (
     <>
@@ -36,7 +35,7 @@ export function BrokerTable({ data }: { data: IBrokerData[] }) {
         columns={[
           { accessor: 'name', title: 'Name' },
           { accessor: 'license', title: 'License' },
-          { accessor: 'id', title: 'User' },
+          { accessor: 'user', title: 'User' },
           { accessor: 'agency', title: 'Agency' },
           {
             accessor: 'actions',
@@ -50,7 +49,7 @@ export function BrokerTable({ data }: { data: IBrokerData[] }) {
                   color="blue"
                   onClick={() => handleEdit(data)}
                 >
-                  <IconEdit size={16} />
+                  <AiOutlineEdit size={16} />
                 </ActionIcon>
                 <ActionIcon
                   size="sm"
@@ -58,7 +57,7 @@ export function BrokerTable({ data }: { data: IBrokerData[] }) {
                   color="red"
                   onClick={() => handleDelete(data)}
                 >
-                  <IconTrash size={16} />
+                  <AiOutlineDelete size={16} />
                 </ActionIcon>
               </Group >
             ),
