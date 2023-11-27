@@ -70,15 +70,3 @@ export enum OFFER_STATUS {
   ACCEPTED = 'accepted',
   REJECTED = 'rejected',
 }
-
-export interface UserAuthModel {
-  id: string;
-  username: string;
-  email: string;
-  name: string;
-  avatar?: string;
-  type: string;
-  created: string;
-  updated: string;
-  token?: string;
-}
