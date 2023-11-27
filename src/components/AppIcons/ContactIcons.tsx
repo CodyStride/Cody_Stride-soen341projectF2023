@@ -32,6 +32,6 @@ const MOCKDATA = [
 ];
 
 export function ContactIconsList({ data }: { data: ContactIconProps[] }) {
-  const items = data.map((item, index) => <ContactIcon key={index} {...item} />);
+  const items = MOCKDATA.map((item, index) => <ContactIcon key={index} {...item} />);
   return <Stack>{items}</Stack>;
 }

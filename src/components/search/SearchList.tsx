@@ -21,16 +21,17 @@ function NoSearchResult() {
 
 export function SearchList({
   data: dataList,
+  user,
 }: {
   data: IPropertyData[];
-  user: UserAuthModel;
+  user?: UserAuthModel;
 }) {
   console.log(dataList)
   return (
     <SimpleGrid cols={5}>
       {dataList.length > 0 ? (
         dataList?.map((data) => (
-          <SearchCard key={data.id} data={data} hasLogin={hasFavorite} />
+          <SearchCard key={data.id} data={data} user={user} />
         ))
       ) : (
         <NoSearchResult />
