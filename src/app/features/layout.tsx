@@ -44,14 +44,6 @@ export default function FeaturePage({ children }: { children: any }) {
             >
               Broker Search
             </Button>
-            <Button
-              variant="outline"
-              size="lg"
-              component="a"
-              href="/features/system_admin"
-            >
-              System Admin Page
-            </Button>
           </Group>
         </Group>
       </AppShell.Header>
