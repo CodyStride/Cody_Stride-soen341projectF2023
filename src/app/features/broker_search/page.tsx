@@ -1,6 +1,7 @@
 import { Space } from "@mantine/core"
 import { SearchInputBrokers, SearchListBrokers } from "@/components/search_broker"
 import db from "@/lib/dbServer"
+import { APP_DATABASE } from "@/lib/dbNames"
 
 export interface BSearchParams {
   name?: string
@@ -16,7 +17,7 @@ export const dynamic = 'auto',
   runtime = 'nodejs',
   preferredRegion = 'auto'
 
-async function getEntries({ name, license, agency, user }: BSearchParams) {
+async function getEntries({ name, license, agency }: BSearchParams) {
   let filter = ''
   if (name) {
     filter += `name ?~ "${name}"`;
@@ -26,26 +27,19 @@ async function getEntries({ name, license, agency, user }: BSearchParams) {
     if (filter) {
         filter += ' && ';
       }
-    filter += `license = "${license}"`;
+    filter += `license ?~ "${license}"`;
   }
 
   if (agency) {
     if (filter) {
       filter += ' && ';
     }
-    filter += `agency >= ${agency}`;
-  }
-
-  if (user) {
-    if (filter) {
-      filter += ' && ';
-    }
-    filter += `user >= ${user}`;
+    filter += `agency >= "${agency}"`;
   }
 
   console.log(filter);
 
-  const broker_data = await db.client.collection('broker_search').getList(1, 50, {
+  const broker_data = await db.client.collection(APP_DATABASE.BROKER_SEARCH).getList(1, 50, {
     filter
   })
   
