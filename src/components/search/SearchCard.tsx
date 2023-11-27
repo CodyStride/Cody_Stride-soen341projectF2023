@@ -21,13 +21,14 @@ import { SubmitOfferModal } from "./OfferModal";
 
 export interface SearchCardProps {
   data: IPropertyData;
-  user: UserAuthModel;
+  user?: UserAuthModel;
 }
 
 const defaultPage =
   "https://images.unsplash.com/photo-1527004013197-933c4bb611b3?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=720&q=80";
 
 export function SearchCard({ data, user }: SearchCardProps) {
+  console.log(user)
   const {
     id,
     owner,
@@ -52,12 +53,14 @@ export function SearchCard({ data, user }: SearchCardProps) {
   };
 
   const submitOffer = () => {
-    modals.open({
-      size: "55rem",
-      children: <SubmitOfferModal user={user} data={data} />,
-      withCloseButton: false,
-      radius: "lg",
-    })
+    if (user) {
+      modals.open({
+        size: "55rem",
+        children: <SubmitOfferModal user={user} data={data} />,
+        withCloseButton: false,
+        radius: "lg",
+      })
+    }
   }
 
   return (
@@ -122,9 +125,9 @@ export function SearchCard({ data, user }: SearchCardProps) {
           fullWidth
           mt="md"
           radius="md"
-          onClick={(hasLogin && requestVisit) || undefined}
-          component={(!hasLogin && "a") || "button"}
-          href={(!hasLogin && "/auth/login") || ""}
+          onClick={(user && requestVisit) || undefined}
+          component={(!user && "a") || "button"}
+          href={(!user && "/auth/login") || ""}
         >
           Request Visit
         </Button>
@@ -133,9 +136,9 @@ export function SearchCard({ data, user }: SearchCardProps) {
           fullWidth
           mt="md"
           radius="md"
-          onClick={(hasLogin && submitOffer) || undefined}
-          component={(!hasLogin && "a") || "button"}
-          href={(!hasLogin && "/auth/login") || ""}
+          onClick={(user && submitOffer) || undefined}
+          component={(!user && "a") || "button"}
+          href={(!user && "/auth/login") || ""}
         >
           Send Offer
         </Button>

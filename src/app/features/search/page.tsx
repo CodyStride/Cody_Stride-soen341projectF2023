@@ -106,7 +106,7 @@ export default async function SearchPage({
       <SearchInput searchParams={searchParams} />
       <Space h="md" />
       <Suspense fallback={<Loading />}>
-        {data ? <SearchList data={data} hasFavorite={!!user} /> : <></>}
+        {data ? <SearchList data={data} user={user} /> : <></>}
       </Suspense>
     </>
   );
