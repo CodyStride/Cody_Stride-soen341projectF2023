@@ -23,5 +23,5 @@ export default async function FeaturePage({
       .join("");
   }
 
-  return <AppLayout children={children} userInit={userInit} />;
+  return <AppLayout children={children} userInit={userInit} user={user} />;
 }
