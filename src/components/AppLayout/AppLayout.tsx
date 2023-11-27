@@ -12,11 +12,11 @@ export interface AppLayoutProps {
 export function AppLayout({ children, user }: AppLayoutProps) {
   return (
     <AppShell
-      header={{height:180}}
+      header={{ height: { base: 60, md: 113, lg: 113 } }}
       // navbar={{ width: 300, breakpoint: 'sm' }}
       // padding="md"
     >
-      <HeaderLayout user={user}/>
+      <HeaderLayout user={user} />
       {/* <AppShell.Navbar p="md">Navbar</AppShell.Navbar> */}
 
       <AppShell.Main>{children}</AppShell.Main>

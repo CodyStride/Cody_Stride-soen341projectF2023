@@ -15,6 +15,7 @@ import {
   rem,
   useMantineTheme,
   AppShell,
+  Title,
 } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import {
@@ -79,6 +80,7 @@ export function HeaderLayout({user}:{user?:UserAuthModel}) {
       <Container className={classes.mainSection} size="md">
         <Group justify="space-between">
           <IconHome size={28} />
+          <Title>REWA</Title>
 
           <Burger opened={opened} onClick={toggle} hiddenFrom="xs" size="sm" />
 
