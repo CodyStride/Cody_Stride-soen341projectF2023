@@ -28,7 +28,7 @@ async function getEntries() {
   return items;
 }
 
-export default async function BrokerPage({}: { searchParams?: any }) {
+export default async function BrokerPage({ }: { searchParams?: any }) {
   const data = await getEntries();
 
   // Invalid state since user must be login

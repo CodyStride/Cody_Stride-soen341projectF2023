@@ -108,7 +108,6 @@ export function SubmitOfferModal({ data }: SubmitOfferProps) {
           <Text fz="lg" fw={700} className={classes.title}>
             Contact Information
           </Text>
-
           <ContactIconsList data={contactInfo} />
         </div>
         <form className={classes.form} onSubmit={form.onSubmit(onSubmit)}>
