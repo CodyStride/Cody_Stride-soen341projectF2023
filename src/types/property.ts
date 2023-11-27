@@ -33,3 +33,9 @@ export interface ISearchPropertyParams {
   bedrooms?: number | string;
   bathrooms?: number | string;
 }
+
+export interface IBrokerData {
+  id: string
+  license?: string
+  agency?: string
+}

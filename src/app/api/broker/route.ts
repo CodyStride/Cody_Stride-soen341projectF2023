@@ -89,8 +89,6 @@ export async function PUT(request: any) {
   }
 }
 
-export async function GET() {}
-
 export async function DELETE(request: any) {
   try {
     const cookieStore = cookies();
