@@ -1,43 +1,45 @@
 'use client';
 
-import { IBrokerData } from "@/types/property";
+import { IPropertyData } from "@/types/property";
 import { ActionIcon, Box, Group } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { DataTable } from "mantine-datatable";
-import { EditBroker } from "./EditBroker";
+import { AiOutlineEye, AiOutlineEdit, AiOutlineDelete } from 'react-icons/ai'
+import { EditPropertyModal } from "./EditPropertyModal";
 import { useState } from "react";
-import { DeleteBroker } from "./DeleteBroker";
-import { IconEdit, IconTrash } from "@tabler/icons-react";
+import { DeletePropertyModal } from "./DeletePropertyModal";
 
-export function BrokerTable({ data }: { data: IBrokerData[] }) {
+export function PropertyTable({ data }: { data: IPropertyData[] }) {
   const [openedEdit, { open: openEdit, close: closeEdit }] = useDisclosure(false);
   const [openedDelete, { open: openDelete, close: closeDelete }] = useDisclosure(false);
-  const [brokerData, setBrokerData] = useState<IBrokerData>();
+  const [propertyData, setPropertyData] = useState<IPropertyData>();
 
-  const handleEdit = (data: IBrokerData) => {
+  const handleEdit = (data: IPropertyData) => {
     console.log(data)
-    setBrokerData(data);
+    setPropertyData(data);
     openEdit();
   }
 
-  const handleDelete = (data: IBrokerData) => {
+  const handleDelete = (data: IPropertyData) => {
     console.log(data)
+    setPropertyData(data);
     openDelete();
   }
 
-  console.log(data);
-
   return (
     <>
-      {brokerData && <EditBroker setBroker={setBrokerData} data={brokerData} closeModal={closeEdit} opened={openedEdit} />}
-      {brokerData && <DeleteBroker brokerId={brokerData.id} closeModal={closeDelete} opened={openedDelete} />}
+      {propertyData && <EditPropertyModal setProperty={setPropertyData} data={propertyData} closeModal={closeEdit} opened={openedEdit} />}
+      {propertyData && <DeletePropertyModal propertyId={propertyData.id} closeModal={closeDelete} opened={openedDelete} />}
       <DataTable
         withTableBorder
         columns={[
-          { accessor: 'name', title: 'Name' },
-          { accessor: 'license', title: 'License' },
-          { accessor: 'id', title: 'User' },
-          { accessor: 'agency', title: 'Agency' },
+          { accessor: 'type', title: 'Type' },
+          { accessor: 'price', title: 'Price (CAD $)' },
+          { accessor: 'description', title: 'Description' },
+          { accessor: 'location', title: 'Location' },
+          { accessor: 'bedrooms', title: 'Bedrooms' },
+          { accessor: 'bathrooms', title: 'Bathrooms' },
+          { accessor: 'image', title: 'Image' },
           {
             accessor: 'actions',
             title: <Box mr={6}>Row actions</Box>,
@@ -50,7 +52,7 @@ export function BrokerTable({ data }: { data: IBrokerData[] }) {
                   color="blue"
                   onClick={() => handleEdit(data)}
                 >
-                  <IconEdit size={16} />
+                  <AiOutlineEdit size={16} />
                 </ActionIcon>
                 <ActionIcon
                   size="sm"
@@ -58,7 +60,7 @@ export function BrokerTable({ data }: { data: IBrokerData[] }) {
                   color="red"
                   onClick={() => handleDelete(data)}
                 >
-                  <IconTrash size={16} />
+                  <AiOutlineDelete size={16} />
                 </ActionIcon>
               </Group >
             ),

@@ -17,6 +17,14 @@ export interface IPropertyDataExp extends IPropertyData {
   }
 }
 
+export interface IBrokerData {
+  id: string
+  name: string
+  license: string
+  agency: string
+  user: string
+}
+
 export interface ISignUpPayload {
   username?: string;
   email: string;

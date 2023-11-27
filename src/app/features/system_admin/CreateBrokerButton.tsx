@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { useDisclosure } from '@mantine/hooks';
-import { Modal, Button, TextInput, LoadingOverlay } from '@mantine/core';
+import { Modal, Button, TextInput, NumberInput, LoadingOverlay } from '@mantine/core';
 import { notifications } from '@mantine/notifications';
 import { useRouter } from 'next/navigation';
 
