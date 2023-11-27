@@ -8,4 +8,5 @@ export enum APP_DATABASE {
   RENTER_INFO = "renter_info",
   BROKER_SEARCH = "broker_search",
   PROPERTY_OFFERS = "property_offers",
+  BROKER_SEARCH = 'broker_search',
 }
