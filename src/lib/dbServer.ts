@@ -1,7 +1,7 @@
 import PocketBase from "pocketbase";
 import { ReadonlyRequestCookies } from "next/dist/server/web/spec-extension/adapters/request-cookies";
 import { APP_DATABASE } from "@/lib/dbNames";
-import { ISignUpPayload } from "@/types/property";
+import { ISignUpPayload, UserAuthModel } from "@/types/property";
 
 export const POCKET_BASE_URL = "https://cody-stridy.pockethost.io";
 
@@ -64,11 +64,11 @@ export class DatabaseServer {
   async getUser(cookieStore: ReadonlyRequestCookies) {
     const cookie = cookieStore.get("pb_auth");
     if (!cookie) {
-      return false;
+      return;
     }
 
     this.client.authStore.loadFromCookie(cookie?.value || "");
-    return this.client.authStore.model;
+    return this.client.authStore.model as UserAuthModel;
   }
 }
 

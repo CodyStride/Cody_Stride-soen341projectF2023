@@ -2,12 +2,15 @@ import { NextResponse } from "next/server";
 import db from "@/lib/dbServer";
 import { cookies } from "next/headers";
 import { APP_DATABASE } from "@/lib/dbNames";
+import { IPropertyOfferPayload, OFFER_STATUS } from "@/types/property";
 
-export interface IRequestVisit {
-  date: string;
-  message: string;
-  owner: string;
-  propertyId: string;
+interface OfferDBPayload {
+  property: string;
+  offeror: string;
+  offeree: string;
+  status: OFFER_STATUS;
+  amount: number;
+  message?: string;
 }
 
 export async function POST(request: any) {
@@ -17,22 +20,19 @@ export async function POST(request: any) {
 
     if (!user) throw "User not authenticated";
 
-    const { date, message, owner, propertyId }: IRequestVisit =
+    const { message, property, amount, offeree }: IPropertyOfferPayload =
       await request.json();
 
-    const [datePart, timePart] = date.split("T");
-    const customFormat = `${datePart} ${timePart.slice(0, -1)}`;
-    console.log(customFormat);
-
-    await db.client.collection(APP_DATABASE.REQUESTS_VISIT).create({
-      sender: user.id,
-      receiver: owner,
-      date: customFormat,
+    const entry: OfferDBPayload = {
       message,
-      property: propertyId,
-      hasAccepted: false,
-      hasRead: false,
-    });
+      property,
+      amount,
+      offeror: user.id,
+      offeree,
+      status: OFFER_STATUS.PENDING,
+    };
+
+    await db.client.collection(APP_DATABASE.PROPERTY_OFFERS).create(entry);
 
     return NextResponse.json({ message: "Property Created" }, { status: 201 });
   } catch (err: any) {
@@ -44,7 +44,7 @@ export async function POST(request: any) {
         headers: {
           "Content-Type": "application/json",
         },
-      },
+      }
     );
   }
 }
