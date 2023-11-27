@@ -6,5 +6,6 @@ export enum APP_DATABASE {
   BUYER_INFO = "buyer_info",
   BROKER_INFO = "broker_info",
   RENTER_INFO = "renter_info",
-  BROKER_SEARCH = "broker_search"
+  BROKER_SEARCH = "broker_search",
+  PROPERTY_OFFERS = "property_offers",
 }

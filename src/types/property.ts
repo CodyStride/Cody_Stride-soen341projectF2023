@@ -19,6 +19,13 @@ export interface ISignUpPayload {
   type: USER_TYPES;
 }
 
+export interface IPropertyOfferPayload {
+  property: string;
+  offeree: string;
+  amount: number;
+  message?: string;
+}
+
 export enum USER_TYPES {
   BROKER = "broker",
   BUYER = "buyer",
@@ -35,7 +42,25 @@ export interface ISearchPropertyParams {
 }
 
 export interface IBrokerData {
-  id: string
-  license?: string
-  agency?: string
+  id: string;
+  license?: string;
+  agency?: string;
+}
+
+export enum OFFER_STATUS {
+  PENDING = "pending",
+  ACCEPTED = "accepted",
+  REJECTED = "rejected",
+}
+
+export interface UserAuthModel {
+  id: string;
+  username: string;
+  email: string;
+  name: string;
+  avatar?: string;
+  type: string;
+  created: string;
+  updated: string;
+  token?: string;
 }

@@ -3,18 +3,33 @@
 import { Button, Group, AppShell, Burger, Avatar } from "@mantine/core";
 import { IconHome } from "@tabler/icons-react";
 import { LogoutButton } from "./LogoutButton";
+import { UserAuthModel } from "@/types/property";
 
 export interface AppLayoutProps {
   children: JSX.Element;
-  userInit?: string;
+  user?: UserAuthModel;
 }
 
-export function AppLayout({ children, userInit }: AppLayoutProps) {
+export function AppLayout({ children, user }: AppLayoutProps) {
+  var userInit: string | undefined;
+
+  if (user) {
+    const words: string[] = user.name.split(" ");
+
+    // Get the first letter of each word and concatenate them
+    words[0].charAt(0).toUpperCase();
+    words[words.length - 1].charAt(0).toUpperCase();
+    userInit = words
+      .map((word: string) => word.charAt(0).toUpperCase())
+      .join("");
+  }
+
+  console.log(user);
   return (
     <AppShell
       header={{ height: 60 }}
       // navbar={{ width: 300, breakpoint: 'sm' }}
-      padding="md" 
+      padding="md"
     >
       <AppShell.Header>
         <Group h="100%" gap={0}>
@@ -32,7 +47,7 @@ export function AppLayout({ children, userInit }: AppLayoutProps) {
               View Listings
             </Button>
 
-            {userInit && [
+            {user && (
               <Button
                 variant="outline"
                 size="lg"
@@ -40,7 +55,9 @@ export function AppLayout({ children, userInit }: AppLayoutProps) {
                 href="/features/dashboard"
               >
                 Dashboard
-              </Button>,
+              </Button>
+            )}
+            {user && (
               <Button
                 variant="outline"
                 size="lg"
@@ -49,16 +66,18 @@ export function AppLayout({ children, userInit }: AppLayoutProps) {
               >
                 Properties
               </Button>
-            ]}
+            )}
 
-            {!userInit && <Button
-              variant="outline"
-              size="lg"
-              component="a"
-              href="/auth/login"
-            >
-              Login
-            </Button>}
+            {!userInit && (
+              <Button
+                variant="outline"
+                size="lg"
+                component="a"
+                href="/auth/login"
+              >
+                Login
+              </Button>
+            )}
 
             {userInit && <LogoutButton />}
           </Group>

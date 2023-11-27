@@ -2,7 +2,7 @@
 
 import { Container, Paper, SimpleGrid, Text } from "@mantine/core";
 import { SearchCard } from "./SearchCard";
-import { IPropertyData } from "@/types/property";
+import { IPropertyData, UserAuthModel } from "@/types/property";
 
 function NoSearchResult() {
   return (
@@ -21,10 +21,9 @@ function NoSearchResult() {
 
 export function SearchList({
   data: dataList,
-  hasFavorite,
 }: {
   data: IPropertyData[];
-  hasFavorite: boolean;
+  user: UserAuthModel;
 }) {
   console.log(dataList)
   return (
