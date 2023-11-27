@@ -33,3 +33,15 @@ export interface ISearchPropertyParams {
   bedrooms?: number | string;
   bathrooms?: number | string;
 }
+
+export interface UserAuthModel {
+  id: string;
+  username: string;
+  email: string;
+  name: string;
+  avatar?: string;
+  type: string;
+  created: string;
+  updated: string;
+  token?: string;
+}

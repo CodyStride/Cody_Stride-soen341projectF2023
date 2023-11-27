@@ -2,19 +2,21 @@
 
 import { AppShell } from "@mantine/core";
 import { HeaderLayout } from "./HeaderLayout";
+import { UserAuthModel } from "@/types/property";
 
 export interface AppLayoutProps {
   children: JSX.Element;
-  user?: string;
+  user?: UserAuthModel;
 }
 
 export function AppLayout({ children, user }: AppLayoutProps) {
   return (
     <AppShell
+      header={{height:180}}
       // navbar={{ width: 300, breakpoint: 'sm' }}
       // padding="md"
     >
-      <HeaderLayout />
+      <HeaderLayout user={user}/>
       {/* <AppShell.Navbar p="md">Navbar</AppShell.Navbar> */}
 
       <AppShell.Main>{children}</AppShell.Main>

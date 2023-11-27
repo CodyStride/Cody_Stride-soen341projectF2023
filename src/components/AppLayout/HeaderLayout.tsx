@@ -2,6 +2,7 @@
 
 import cx from "clsx";
 import { useState } from "react";
+import { deleteCookie } from "cookies-next";
 import {
   Container,
   Avatar,
@@ -20,31 +21,20 @@ import {
   IconLogout,
   IconHome,
   IconHeart,
-  IconStar,
-  IconMessage,
-  IconSettings,
-  IconPlayerPause,
-  IconTrash,
-  IconSwitchHorizontal,
   IconChevronDown,
 } from "@tabler/icons-react";
 import classes from "./HeaderLayout.module.css";
 import { useRouter, usePathname } from "next/navigation";
+import { UserAuthModel } from "@/types/property";
 
-const user = {
-  name: "Jane Spoonfighter",
-  email: "janspoon@fighter.dev",
-  image:
-    "https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/avatars/avatar-5.png",
-};
 
 const tabs: { label: string; page: string }[] = [
   { label: "Home", page: "" },
-  { label: "Orders", page: "dashboard" },
+  { label: "Dashboard", page: "dashboard" },
   { label: "Listings", page: "search" }
 ];
 
-export function HeaderLayout() {
+export function HeaderLayout({user}:{user?:UserAuthModel}) {
   const theme = useMantineTheme();
   const [opened, { toggle }] = useDisclosure(false);
   const [userMenuOpened, setUserMenuOpened] = useState(false);
@@ -60,6 +50,29 @@ export function HeaderLayout() {
       </Tabs.Tab>
     );
   });
+
+  // Get user initials
+  var userInit: string | undefined;
+  if (user) {
+    const words: string[] = user.name.split(" ");
+
+    // Get the first letter of each word and concatenate them
+    words[0].charAt(0).toUpperCase();
+    words[words.length - 1].charAt(0).toUpperCase();
+    userInit = words
+      .map((word: string) => word.charAt(0).toUpperCase())
+      .join("");
+  }
+
+  const onLogout = async () => {
+    try {
+      deleteCookie('pb_auth');
+      localStorage.clear();
+      router.push('/auth/login');
+    } catch (err) {
+      console.log(err)
+    }
+  };
 
   return (
     <AppShell.Header className={classes.header}>
@@ -84,14 +97,9 @@ export function HeaderLayout() {
                 })}
               >
                 <Group gap={7}>
-                  <Avatar
-                    src={user.image}
-                    alt={user.name}
-                    radius="xl"
-                    size={20}
-                  />
+                <Avatar color="cyan" size="30">{userInit}</Avatar>
                   <Text fw={500} size="sm" lh={1} mr={3}>
-                    {user.name}
+                    {user?.name}
                   </Text>
                   <IconChevronDown
                     style={{ width: rem(12), height: rem(12) }}
@@ -102,6 +110,7 @@ export function HeaderLayout() {
             </Menu.Target>
             <Menu.Dropdown>
               <Menu.Item
+                onClick={() => router.push('/features/dashboard')}
                 leftSection={
                   <IconHeart
                     style={{ width: rem(16), height: rem(16) }}
@@ -110,53 +119,13 @@ export function HeaderLayout() {
                   />
                 }
               >
-                Favorite
-              </Menu.Item>
-              <Menu.Item
-                leftSection={
-                  <IconStar
-                    style={{ width: rem(16), height: rem(16) }}
-                    color={theme.colors.yellow[6]}
-                    stroke={1.5}
-                  />
-                }
-              >
-                Saved posts
-              </Menu.Item>
-              <Menu.Item
-                leftSection={
-                  <IconMessage
-                    style={{ width: rem(16), height: rem(16) }}
-                    color={theme.colors.blue[6]}
-                    stroke={1.5}
-                  />
-                }
-              >
-                Your comments
+                Favorites
               </Menu.Item>
 
               <Menu.Label>Settings</Menu.Label>
+
               <Menu.Item
-                leftSection={
-                  <IconSettings
-                    style={{ width: rem(16), height: rem(16) }}
-                    stroke={1.5}
-                  />
-                }
-              >
-                Account settings
-              </Menu.Item>
-              <Menu.Item
-                leftSection={
-                  <IconSwitchHorizontal
-                    style={{ width: rem(16), height: rem(16) }}
-                    stroke={1.5}
-                  />
-                }
-              >
-                Change account
-              </Menu.Item>
-              <Menu.Item
+                onClick={onLogout}
                 leftSection={
                   <IconLogout
                     style={{ width: rem(16), height: rem(16) }}
@@ -167,20 +136,6 @@ export function HeaderLayout() {
                 Logout
               </Menu.Item>
 
-              <Menu.Divider />
-
-              <Menu.Label>Danger zone</Menu.Label>
-              <Menu.Item
-                color="red"
-                leftSection={
-                  <IconTrash
-                    style={{ width: rem(16), height: rem(16) }}
-                    stroke={1.5}
-                  />
-                }
-              >
-                Delete account
-              </Menu.Item>
             </Menu.Dropdown>
           </Menu>
         </Group>
