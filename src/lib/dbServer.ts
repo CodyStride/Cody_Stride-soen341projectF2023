@@ -13,6 +13,25 @@ export class DatabaseServer {
     this.client.autoCancellation(false);
   }
 
+  async authenticateAdmin(email: string, password: string) {
+    try {
+      const result = await this.client.admins.authWithPassword(email, password);
+
+      console.log("authenticate result:", result);
+
+      if (!result?.token) {
+        throw new Error("Invalid email or password");
+      }
+
+      console.log('OK')
+
+      return result;
+    } catch (err) {
+      console.error(err);
+      throw new Error("Invalid email or password");
+    }
+  }
+
   async authenticate(email: string, password: string) {
     try {
       const result = await this.client
