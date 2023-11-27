@@ -4,7 +4,7 @@ import { useDisclosure } from '@mantine/hooks';
 import { Modal, Button, Alert, Group } from '@mantine/core';
 import { notifications } from '@mantine/notifications';
 import { useRouter } from 'next/navigation';
-import { IconAlertHexagon } from '@tabler/icons-react';
+import { AiOutlineAlert } from 'react-icons/ai'
 
 export interface DeleteBroker {
   brokerId: string;
@@ -27,7 +27,7 @@ export function DeleteBroker({ brokerId, opened, closeModal }: DeleteBroker) {
     load()
 
     try {
-      const res = await fetch(`/api/admin?id=${brokerId}`, {
+      const res = await fetch(`http://localhost:3000/broker/api?id=${brokerId}`, {
         method: "DELETE",
       });
 
@@ -52,7 +52,7 @@ export function DeleteBroker({ brokerId, opened, closeModal }: DeleteBroker) {
   return (
     <>
       <Modal opened={opened} onClose={closeModal} withCloseButton={false}>
-        <Alert variant="light" color="blue" title="Delete Broker" icon={<IconAlertHexagon />}>
+        <Alert variant="light" color="blue" title="Delete Broker" icon={<AiOutlineAlert />}>
           <Group>
             <Button color="red" onClick={handleFormSubmit}>Delete</Button>
             <Button color="blue" onClick={closeModal}>Cancel</Button>
