@@ -70,3 +70,4 @@ export enum OFFER_STATUS {
   ACCEPTED = 'accepted',
   REJECTED = 'rejected',
 }
+

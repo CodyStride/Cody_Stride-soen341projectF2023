@@ -94,6 +94,12 @@ function LoginPage() {
             Register
           </Anchor>
         </Text>
+        <Text ta="center" mt="md">
+          Are you a System Admin?{" "}
+          <Anchor<"a"> href="/auth/signup" fw={700}>
+            Log in as System Admin
+          </Anchor>
+        </Text>
       </Paper>
     </div>
   );

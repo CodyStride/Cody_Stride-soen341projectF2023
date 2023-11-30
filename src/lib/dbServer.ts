@@ -84,7 +84,7 @@ export class DatabaseServer {
   async getUser(cookieStore: ReadonlyRequestCookies) {
     const cookie = cookieStore.get("pb_auth");
     if (!cookie) {
-      return;
+      return undefined;
     }
 
     this.client.authStore.loadFromCookie(cookie?.value || "");
