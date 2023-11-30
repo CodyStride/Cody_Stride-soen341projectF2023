@@ -2,7 +2,7 @@
 
 import { Container, Paper, SimpleGrid, Text } from "@mantine/core";
 import { SearchCard } from "./SearchCard";
-import { IPropertyData } from "@/types/property";
+import { IPropertyDataExp, UserAuthModel } from "@/types/property";
 
 function NoSearchResult() {
   return (
@@ -21,17 +21,17 @@ function NoSearchResult() {
 
 export function SearchList({
   data: dataList,
-  hasFavorite,
+  user,
 }: {
-  data: IPropertyData[];
-  hasFavorite: boolean;
+  data: IPropertyDataExp[];
+  user?: UserAuthModel;
 }) {
   console.log(dataList)
   return (
     <SimpleGrid cols={5}>
       {dataList.length > 0 ? (
         dataList?.map((data) => (
-          <SearchCard key={data.id} data={data} hasLogin={hasFavorite} />
+          <SearchCard key={data.id} data={data} user={user} />
         ))
       ) : (
         <NoSearchResult />

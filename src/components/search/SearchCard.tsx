@@ -12,21 +12,22 @@ import {
 } from "@mantine/core";
 import { modals } from "@mantine/modals";
 import { RequestModal } from "./RequestModal";
-import { IPropertyData } from "@/types/property";
+import { IPropertyDataExp, UserAuthModel } from "@/types/property";
 import { FavoriteButton } from "./FavoriteButton";
-import { IconBath, IconBed, IconGlobe } from "@tabler/icons-react";
+import { IconBath, IconBed } from "@tabler/icons-react";
 
 import classes from "./SeachCard.module.css";
+import { SubmitOfferModal } from "./OfferModal";
 
 export interface SearchCardProps {
-  data: IPropertyData;
-  hasLogin?: boolean;
+  data: IPropertyDataExp;
+  user?: UserAuthModel;
 }
 
 const defaultPage =
   "https://images.unsplash.com/photo-1527004013197-933c4bb611b3?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=720&q=80";
 
-export function SearchCard({ data, hasLogin }: SearchCardProps) {
+export function SearchCard({ data, user }: SearchCardProps) {
   const {
     id,
     owner,
@@ -50,6 +51,19 @@ export function SearchCard({ data, hasLogin }: SearchCardProps) {
     });
   };
 
+  const submitOffer = () => {
+    if (user) {
+      modals.open({
+        size: "55rem",
+        children: <SubmitOfferModal user={user} data={data} />,
+        withCloseButton: false,
+        radius: "lg",
+      })
+    }
+  }
+
+  const belongsUser = user?.id == data.owner;
+
   return (
     <Card
       data-cy="search-card"
@@ -61,8 +75,8 @@ export function SearchCard({ data, hasLogin }: SearchCardProps) {
     >
       <Card.Section>
         <Image src={image ? image : defaultPage} height={160} alt="House" />
-        <Badge className={classes.rating} color="pink">
-          On Sale
+        <Badge className={classes.rating} color={belongsUser ? "pink" : "red"}>
+          {belongsUser ? "Owned" : "On Sale"}
         </Badge>
       </Card.Section>
 
@@ -70,7 +84,7 @@ export function SearchCard({ data, hasLogin }: SearchCardProps) {
         <Text size="lg" fw={700}>
           {formattedPrice}
         </Text>
-        {hasLogin && (
+        {user && (
           <FavoriteButton propertyId={id} isFavorite={data.isFavorite} />
         )}
       </Group>
@@ -107,25 +121,27 @@ export function SearchCard({ data, hasLogin }: SearchCardProps) {
 
       <Group gap={8} mr={0}>
         <Button
+          disabled={belongsUser}
           variant="light"
           color="blue"
           fullWidth
           mt="md"
           radius="md"
-          onClick={(hasLogin && requestVisit) || undefined}
-          component={(!hasLogin && "a") || "button"}
-          href={(!hasLogin && "/auth/login") || ""}
+          onClick={(user && requestVisit) || undefined}
+          component={(!user && "a") || "button"}
+          href={(!user && "/auth/login") || ""}
         >
           Request Visit
         </Button>
         <Button
+          disabled={belongsUser}
           variant="light"
           fullWidth
           mt="md"
           radius="md"
-          onClick={(hasLogin && requestVisit) || undefined}
-          component={(!hasLogin && "a") || "button"}
-          href={(!hasLogin && "/auth/login") || ""}
+          onClick={(user && submitOffer) || undefined}
+          component={(!user && "a") || "button"}
+          href={(!user && "/auth/login") || ""}
         >
           Send Offer
         </Button>

@@ -1,7 +1,7 @@
 import { Space } from "@mantine/core";
 import db from "@/lib/dbServer";
 import { SearchInput, SearchList } from "@/components/search";
-import { IPropertyData, ISearchPropertyParams } from "@/types/property";
+import { IPropertyData, IPropertyDataExp, ISearchPropertyParams } from "@/types/property";
 import { Suspense } from "react";
 import Loading from "./loading";
 import { APP_DATABASE } from "@/lib/dbNames";
@@ -59,14 +59,15 @@ async function getEntries({
 
   const data = await db.client
     .collection(APP_DATABASE.PROPERTIES)
-    .getList<IPropertyData>(1, 50, {
+    .getList<IPropertyDataExp>(1, 50, {
       filter,
+      expand: 'owner'
     });
 
   return data.items;
 }
 
-function markFavorites(properties: IPropertyData[], favoriteList: string[]): IPropertyData[] {
+function markFavorites(properties: IPropertyDataExp[], favoriteList: string[]): IPropertyDataExp[] {
   return properties.map(property => ({
     ...property,
     isFavorite: favoriteList.some(favorite => favorite === property.id)
@@ -80,7 +81,7 @@ export default async function SearchPage({
 }) {
   const cookieStore = cookies();
   const user = await db.getUser(cookieStore);
-  var data: IPropertyData[];
+  var data: IPropertyDataExp[];
 
   if (user) {
     const favoriteReq = db.client
@@ -88,9 +89,10 @@ export default async function SearchPage({
       .getFirstListItem<{ properties: string[] }>(`user = "${user.id}"`);
     const requests: any = [getEntries(searchParams), favoriteReq];
     const results = await Promise.allSettled(requests);
-
+    
     if (results[0].status !== 'fulfilled')
       throw "Could not get properties"
+    console.log("RESULTS", results[0].value);
 
     if (results[1].status !== 'fulfilled')
       throw "Could not get favorites of user"
@@ -106,7 +108,7 @@ export default async function SearchPage({
       <SearchInput searchParams={searchParams} />
       <Space h="md" />
       <Suspense fallback={<Loading />}>
-        {data ? <SearchList data={data} hasFavorite={!!user} /> : <></>}
+        {data ? <SearchList data={data} user={user} /> : <></>}
       </Suspense>
     </>
   );

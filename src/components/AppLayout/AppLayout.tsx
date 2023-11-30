@@ -1,5 +1,6 @@
 "use client";
 
+
 import { AppShell } from "@mantine/core";
 import { HeaderLayout } from "./HeaderLayout";
 import { UserAuthModel } from "@/types/property";
@@ -24,54 +25,3 @@ export function AppLayout({ children, user }: AppLayoutProps) {
   );
 }
 
-{
-  /* <AppShell.Header>
-    <Group h="100%" gap={0}>
-      <Group justify="center" px="md">
-        <Burger hiddenFrom="sm" size="sm" />
-        <Button variant="outline" size="lg" component="a" href="/features">
-          <IconHome />
-        </Button>
-        <Button
-          variant="outline"
-          size="lg"
-          component="a"
-          href="/features/search"
-        >
-          View Listings
-        </Button>
-
-        {userInit && [
-          <Button
-            variant="outline"
-            size="lg"
-            component="a"
-            href="/features/dashboard"
-          >
-            Dashboard
-          </Button>,
-          <Button
-            variant="outline"
-            size="lg"
-            component="a"
-            href="/features/broker"
-          >
-            Properties
-          </Button>
-        ]}
-
-        {!userInit && <Button
-          variant="outline"
-          size="lg"
-          component="a"
-          href="/auth/login"
-        >
-          Login
-        </Button>}
-
-        {userInit && <LogoutButton />}
-      </Group>
-      {userInit && <Avatar color="blue">{userInit}</Avatar>}
-    </Group>
-  </AppShell.Header> */
-}

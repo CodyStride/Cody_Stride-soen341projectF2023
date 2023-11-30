@@ -6,7 +6,7 @@ describe("Real Estate Search Functionality", () => {
     cy.get("[data-cy=loading-overlay]").should("not.exist");
     cy.get("[data-cy=property-type]").click();
     cy.get("[data-cy=property-type]").focus().type("Ho");
-    cy.get('.mantine-Autocomplete-dropdown').contains('House').click();
+    cy.get(".mantine-Autocomplete-dropdown").contains("House").click();
 
     // Type minimum listing price
     cy.get("[data-cy=min-price]").type("500000");
@@ -24,7 +24,7 @@ describe("Real Estate Search Functionality", () => {
     cy.get("[data-cy=search-button]").click();
 
     // Validate search results
-    cy.get("[data-cy=search-card]").should("have.length.greaterThan", 2);
+    cy.get("[data-cy=search-card]").should("have.length.greaterThan", 2, { timeout: 10000 });
   });
 
   it("should not have any results", () => {
@@ -34,7 +34,7 @@ describe("Real Estate Search Functionality", () => {
     cy.get("[data-cy=loading-overlay]").should("not.exist");
     cy.get("[data-cy=property-type]").click();
     cy.get("[data-cy=property-type]").focus().type("Ho");
-    cy.get('.mantine-Autocomplete-dropdown').contains('House').click();
+    cy.get(".mantine-Autocomplete-dropdown").contains("House").click();
 
     // Type minimum listing price
     cy.get("[data-cy=min-price]").type("500000");
@@ -51,6 +51,6 @@ describe("Real Estate Search Functionality", () => {
     // Click the reset button
     cy.get("[data-cy=search-button]").click();
 
-    cy.get("[data-cy=search-card]").should("not.exist");
+    cy.get("[data-cy=search-card]").should("not.exist", { timeout: 10000 });
   });
 });

@@ -9,6 +9,8 @@ export default async function FeaturePage({
 }) {
   const cookieStore = cookies();
   const user = await db.getUser(cookieStore);
+  if (user)
+    user.token = undefined;
 
   return <AppLayout children={children} user={user} />;
 }

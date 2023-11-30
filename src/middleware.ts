@@ -15,6 +15,10 @@ export async function middleware(request: NextRequest) {
     return;
   }
 
+  if (request.nextUrl.pathname === "/") {
+    return NextResponse.redirect(new URL("/features", request.url));
+  }
+
   // Keep search feature as not required to login
   if (
     request.nextUrl.pathname &&

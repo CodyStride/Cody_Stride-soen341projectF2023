@@ -11,12 +11,25 @@ export interface IPropertyData {
   isFavorite?: boolean;
 }
 
+export interface IPropertyDataExp extends IPropertyData {
+  expand: {
+    owner: UserAuthModel;
+  }
+}
+
 export interface ISignUpPayload {
   username?: string;
   email: string;
   password: string;
   name?: string;
   type: USER_TYPES;
+}
+
+export interface IPropertyOfferPayload {
+  property: string;
+  offeree: string;
+  amount: number;
+  message?: string;
 }
 
 export enum USER_TYPES {
@@ -45,3 +58,16 @@ export interface UserAuthModel {
   updated: string;
   token?: string;
 }
+
+export interface IBrokerData {
+  id: string
+  license?: string
+  agency?: string
+}
+
+export enum OFFER_STATUS {
+  PENDING = 'pending',
+  ACCEPTED = 'accepted',
+  REJECTED = 'rejected',
+}
+
