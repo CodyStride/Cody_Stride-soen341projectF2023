@@ -33,6 +33,8 @@ const tabs: { label: string; page: string }[] = [
   { label: "Home", page: "" },
   { label: "Dashboard", page: "dashboard" },
   { label: "Listings", page: "search" },
+  { label: "My Properties", page: "broker" },
+  { label: "Brokers", page: "search_broker" },
   { label: "About Us", page: "aboutUs" }
 ];
 

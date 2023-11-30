@@ -10,19 +10,21 @@ export function MainBackground() {
         <div className={classes.inner}>
           <div className={classes.content}>
             <Title className={classes.title}>
+              Welcome to {" "}
               <Text
                 component="span"
                 inherit
                 variant="gradient"
                 gradient={{ from: "pink", to: "yellow" }}
               >
-                fully featured
+               Cody Stride's 
               </Text>{" "}
-              React components library
+              Real Estate Website
             </Title>
 
             <Text className={classes.description} mt={30}>
-              A site containing all the tools you need!
+            Find your dream home with us. Browse through a wide range of properties,
+        from cozy apartments to spacious villas.
             </Text>
 
             <Button
