@@ -1,16 +1,28 @@
 "use client";
 
-import { IPropertyData, IPropertyOfferPayload, UserAuthModel } from "@/types/property";
-import { Button, LoadingOverlay, NumberInput, Paper, Text, Textarea, Title } from "@mantine/core";
+import {
+  IPropertyDataExp,
+  IPropertyOfferPayload,
+  UserAuthModel,
+} from "@/types/property";
+import {
+  Button,
+  LoadingOverlay,
+  NumberInput,
+  Paper,
+  Text,
+  Textarea,
+} from "@mantine/core";
 import { useForm } from "@mantine/form";
 import { useDisclosure } from "@mantine/hooks";
 import { modals } from "@mantine/modals";
 import { notifications } from "@mantine/notifications";
-import classes from './OfferModal.module.css';
+import classes from "./OfferModal.module.css";
 import { ContactIconsList } from "@/components/AppIcons";
+import { IconAt, IconMapPin } from "@tabler/icons-react";
 
 export interface SubmitOfferProps {
-  data: IPropertyData;
+  data: IPropertyDataExp;
   user: UserAuthModel;
 }
 
@@ -22,16 +34,26 @@ interface IFormOffer {
 export function SubmitOfferModal({ data }: SubmitOfferProps) {
   // Handles loading state
   const [visible, { open: load, close: ready }] = useDisclosure(false);
-  const { owner, price, id } = data;
+  const { price, id, location, expand } = data;
+  const { owner } = expand;
+
+  console.log(owner);
+  const contactInfo = [
+    { title: "Email", description: owner.email, icon: IconAt },
+    { title: "Address", description: location, icon: IconMapPin },
+  ];
 
   const form = useForm({
     initialValues: {
-      message: '',
-    amount: price,
-  } as IFormOffer,
+      message: "",
+      amount: price,
+    } as IFormOffer,
 
     validate: {
-      amount: (amount) => (amount > price * 0.75) ? null : "Offer should at least be 75% of orignal price"
+      amount: (amount) =>
+        amount > price * 0.75
+          ? null
+          : "Offer should at least be 75% of orignal price",
     },
   });
 
@@ -39,7 +61,12 @@ export function SubmitOfferModal({ data }: SubmitOfferProps) {
     console.log("Send offer");
     load();
     try {
-      const formData: IPropertyOfferPayload = { amount, message, property: id, offeree: owner };
+      const formData: IPropertyOfferPayload = {
+        amount,
+        message,
+        property: id,
+        offeree: owner.id,
+      };
       const response = await fetch("/api/offer", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -78,15 +105,15 @@ export function SubmitOfferModal({ data }: SubmitOfferProps) {
     <Paper shadow="md" radius="lg">
       <div className={classes.wrapper}>
         <div className={classes.contacts}>
-          <Text fz="lg" fw={700} className={classes.title} c="#fff">
-            Contact information
+          <Text fz="lg" fw={700} className={classes.title}>
+            Contact Information
           </Text>
 
-          {/* <ContactIconsList /> */}
+          <ContactIconsList data={contactInfo} />
         </div>
         <form className={classes.form} onSubmit={form.onSubmit(onSubmit)}>
           <Text fz="lg" fw={700} className={classes.title}>
-            Get in touch
+            Offer Form
           </Text>
           <div className={classes.fields}>
             <LoadingOverlay
@@ -100,7 +127,7 @@ export function SubmitOfferModal({ data }: SubmitOfferProps) {
               label="Price"
               prefix="$ "
               allowNegative={false}
-              {...form.getInputProps('amount')}
+              {...form.getInputProps("amount")}
             />
             <Textarea
               placeholder="optional"

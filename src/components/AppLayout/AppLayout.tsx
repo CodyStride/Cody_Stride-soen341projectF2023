@@ -3,7 +3,7 @@
 import { Button, Group, AppShell, Burger, Avatar } from "@mantine/core";
 import { IconHome } from "@tabler/icons-react";
 import { LogoutButton } from "./LogoutButton";
-import { UserAuthModel } from "@/types/property";
+import { USER_TYPES, UserAuthModel } from "@/types/property";
 
 export interface AppLayoutProps {
   children: JSX.Element;
@@ -57,7 +57,7 @@ export function AppLayout({ children, user }: AppLayoutProps) {
                 Dashboard
               </Button>
             )}
-            {user && (
+            {user && (user?.type == USER_TYPES.BROKER) && (
               <Button
                 variant="outline"
                 size="lg"

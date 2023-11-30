@@ -22,6 +22,7 @@ async function getEntries() {
     .collection(APP_DATABASE.PROPERTIES)
     .getList<IPropertyData>(1, 25, {
       filter: `owner = "${user.id}"`,
+      expand: 'owner',
     });
 
   return items;
