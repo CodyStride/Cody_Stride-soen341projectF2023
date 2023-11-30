@@ -43,6 +43,7 @@ export class DatabaseServer {
           passwordConfirm: password,
           type,
           name,
+          emailVisibility: true,
         });
 
       return result;

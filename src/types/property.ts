@@ -11,6 +11,12 @@ export interface IPropertyData {
   isFavorite?: boolean;
 }
 
+export interface IPropertyDataExp extends IPropertyData {
+  expand: {
+    owner: UserAuthModel;
+  }
+}
+
 export interface ISignUpPayload {
   username?: string;
   email: string;

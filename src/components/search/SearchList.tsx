@@ -2,7 +2,7 @@
 
 import { Container, Paper, SimpleGrid, Text } from "@mantine/core";
 import { SearchCard } from "./SearchCard";
-import { IPropertyData, UserAuthModel } from "@/types/property";
+import { IPropertyDataExp, UserAuthModel } from "@/types/property";
 
 function NoSearchResult() {
   return (
@@ -23,7 +23,7 @@ export function SearchList({
   data: dataList,
   user,
 }: {
-  data: IPropertyData[];
+  data: IPropertyDataExp[];
   user?: UserAuthModel;
 }) {
   console.log(dataList)

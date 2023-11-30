@@ -1,11 +1,13 @@
 "use client";
 
+import { UserAuthModel } from "@/types/property";
 import { Button, Flex, LoadingOverlay, Textarea } from "@mantine/core";
 import { DatePicker, TimeInput } from "@mantine/dates";
 import { useForm } from "@mantine/form";
 import { useDisclosure } from "@mantine/hooks";
 import { modals } from "@mantine/modals";
 import { notifications } from "@mantine/notifications";
+import classes from './RequestModal.module.css'
 
 export interface RequestModalProps {
   owner: string;
@@ -26,7 +28,7 @@ export function RequestModal({ owner, propertyId }: RequestModalProps) {
 
   const form = useForm({
     initialValues: {
-      owner,
+      owner: owner,
       propertyId,
       message: "",
       date: null,
@@ -95,17 +97,19 @@ export function RequestModal({ owner, propertyId }: RequestModalProps) {
           overlayProps={{ radius: "sm", blur: 2 }}
         />
         <DatePicker {...form.getInputProps("date")} />
-        <TimeInput label="Select time" {...form.getInputProps("time")} />
-        <Textarea
-          placeholder="optional"
-          label="Message"
-          autosize
-          minRows={2}
-          {...form.getInputProps("message")}
-        />
-        <Button fullWidth mt="xl" size="md" type="submit">
-          Submit
-        </Button>
+        <div className={classes.fields}>
+          <TimeInput label="Select time" {...form.getInputProps("time")} />
+          <Textarea
+            placeholder="optional"
+            label="Message"
+            autosize
+            minRows={2}
+            {...form.getInputProps("message")}
+          />
+          <Button fullWidth mt="xl" size="md" type="submit">
+            Submit
+          </Button>
+        </div>
       </Flex>
     </form>
   );
