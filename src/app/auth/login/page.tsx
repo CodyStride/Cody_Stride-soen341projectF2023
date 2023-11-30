@@ -96,7 +96,7 @@ function LoginPage() {
         </Text>
         <Text ta="center" mt="md">
           Are you a System Admin?{" "}
-          <Anchor<"a"> href="/auth/signup" fw={700}>
+          <Anchor<"a"> href="/auth/admin" fw={700}>
             Log in as System Admin
           </Anchor>
         </Text>

@@ -2,7 +2,7 @@ import { ThemeIcon, Text, Title, Container, SimpleGrid, rem } from '@mantine/cor
 import { IconBrandSpeedtest, IconMoodSmile, IconAspectRatioFilled, IconMessage2, IconLock } from '@tabler/icons-react';
 import classes from './featureGrid.module.css';
 
-export const MOCKDATA = [
+const MOCKDATA = [
   {
     icon: IconBrandSpeedtest,
     title: 'Amazing performance',
@@ -41,7 +41,7 @@ interface FeatureProps {
   description: React.ReactNode;
 }
 
-export function Feature({ icon: Icon, title, description }: FeatureProps) {
+function Feature({ icon: Icon, title, description }: FeatureProps) {
   return (
     <div>
       <ThemeIcon variant="light" size={40} radius={40}>
