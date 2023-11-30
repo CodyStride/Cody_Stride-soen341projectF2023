@@ -32,7 +32,8 @@ import { UserAuthModel } from "@/types/property";
 const tabs: { label: string; page: string }[] = [
   { label: "Home", page: "" },
   { label: "Dashboard", page: "dashboard" },
-  { label: "Listings", page: "search" }
+  { label: "Listings", page: "search" },
+  { label: "About Us", page: "aboutUs" }
 ];
 
 export function HeaderLayout({user}:{user?:UserAuthModel}) {
