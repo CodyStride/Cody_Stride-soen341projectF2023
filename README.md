@@ -31,40 +31,28 @@ Let's take a deeper look into each individual's role and background:
 As of now, our team has agreed on an idea on how the application will be built in general. We've organized the main components that we wish to produce and that'll
 ultimately form our complete site. Here's a list of the current functionalities or components that we have in mind:
 
-1. <ins>Initial page:</ins> The first page that appears on the user's screen will be quite simple, as its objective will be to determine what the user wishes to use the site for. There'll be 3 different options for the user to click on: a) I am a buyer/renter b) I am a broker c) I am a system administrator.
-2. <ins>Login Page:</ins> On our site, you'll be able to create an account and connect to it, so we'll have a login system. Once the user clicks on one of the three buttons, he'll be directed to a login page. Its format'll be the same for all types of accounts.
-3. <ins>Main Pages:</ins> For each type of account, the site's design/format will be relatively similar, however the functionality will be different. For brokers, buyers and renters, the houses will be displayed in the same way in the home page, but the commands that'll let the user will be able to do will differ by account. Here's a general idea of what each user will be able to do. Note that this is a summarized description:
+
+1. <ins>Login Page:</ins> On our site, you'll be able to create an account and connect to it, so we'll have a login system. The login page format will be the same for the users, and they'll also have the choice to register to the site, therefore creating an account.
+2. <ins>Main Pages:</ins> For each type of account, the site's design/format will be relatively similar, however the functionality will be different. For brokers, buyers and renters, the houses will be displayed in the same way in the home page, but the commands that'll let the user will be able to do will differ by account. Here's a general idea of what each user will be able to do. Note that this is a summarized description:
 
 - Buyers/renters will be able to view a house or request a visit. Buyers will also be able to use a mortgage calculator
 - Brokers will be able to view the houses they're selling or the ones other brokers are selling. For the ones they're selling, they can add or remove them whenever, thus removing them from the database. But, they could also throw in some offers to the other broker's positngs.
 - System administrators will have a main screen with the list of brokers. They could go to their account page and see the postings they've put online.  
   Furthermore, they'll be able to remove their accounts or even add new accounts if desired. That'd be removing the account from the database completely.
 
-1. <ins>Account pages:</ins> When clicking on a user, we'll be able to see his account. Buyers or renters won't have too much on theirs, only their name and a description if they wish. They could also choose an image for their profile. Same thing for system administrators. However, for brokers, they'll have the same aspects, but anyone'll be able to see what houses they've posted for selling.
+
 
 Here's a description of every technology that we will eventually be using and why we've chosen it for the sake of our project.
 
-### Frontend
+### NextJS
+NextJS is a full-stack React framework and that was the language we’d mainly used in the code for our project. Fortunately, it’s way simpler to use than many of the other tools that we could’ve used to build this website. In particular, the framework facilitates routing and even handles server side rendering. Furthermore, the developer experience for whoever works with NextJS is usually positive. In fact, with such a big community, it is easy to find helpful discussions online about issues we’d face. Additionally, the documentation provided is more than enough to keep you in control and to always help understand what you’re doing when coding with this tool. Earlier in our programming journey, some of us on the team had worked with React and NextJS, so we managed to help out the rest of the team who were relatively inexperienced.
+Now, we could’ve simply stuck to React, or we could’ve used another React framework such as Gatsby, but ultimately, we didn’t. We stuck to NextJS because our project’s focus was meant to be on delivering proper and functional features rather than focusing on learning how to code. NextJS was simpler than React while also being more efficient, which makes for faster results. As for Gatsby, we’d initially considered the option, but with how large NextJs is, we didn’t feel like using it would be a great idea. Considering none of us had ever looked into it before, and that NextJS was better suited for our project, it was clearly the better choice. In fact, both server side rendering and static site generation are handled in NextJS, which was more useful in our case as Gatsby didn’t really support the former.
 
-- <ins>React:</ins> React is a widely used JavaScript framework. Many sites are built using React as it simplifies the process of creating user interfaces while it also helps in developing components which would usually be way harder to implement with JavaScript alone. Furthermore, the great thing about React is that it allows the programmer to easily reuse these previously created components. Overall, this frameworks enhances efficiency and simplifies development of websites. For example, React can be used for autocompletion in input fields.
-  A lot of our members know JavaSript, and one of the temamates already had knowledge on React while two of us were currently learning about this framework, making
-  it the perfect tool to use for the front-end of our website
+### PocketBase
+PocketBase is a relatively new technology. In fact, it was established in 2023. Although it is relatively risky to use those types of tools, it’s definitely helpful when it works well. PocketBase is a real-time database, so it quickly receives and modifies data that it takes in. It additionally offers great tools which were greatly useful for the scope of our project. For example, we used the built in authentication tool to give users different types of accounts, a process which would’ve been otherwise very complicated to implement.
+When compared to traditional databases such as SQL (MySQL, PostgreSQL, etc.), PocketBase is way more simple to integrate into the project and eventually use. As mentioned earlier, the goal of our project is to deliver the best results at the right time, so whatever tool there is which helps us provide our customers with what they want, we’ll use. Furthermore, the team had overall minimal experience with databases, and specifically on integration of data from these databases into a web application. By learning PocketBase, the process is heavily simplified. In fact, there isn’t even any setup involved with APIs.
+ 
+### Mantine UI
+Mantine UI is a React components library. As PocketBase, it is relatively modern, but absolutely efficient. Many times in the project, instead of coding complicated areas of our site by ourselves and allocating much time to rather mundane tasks involving design for example, we utilized Mantine’s available components. Another great thing about these components is that they’re very well designed. Using them added charming touches to our website’s overall look, thus improving the user interface and even experience. Lastly, this library even ensures that our site remains responsive, another responsibility which would have otherwise been unnecessarily time consuming.
+There are many other React component libraries out there, and they’re all really efficient and convenient to use. We were planning on using Chakra UI, but Mantine simply topped it every time we were looking for a certain component. We found the designs to be cleaner and fit our website’s design better, while we’d also read from many users that Mantine UI was more simple to integrate into your project. As our primary aim is simplicity, efficiency and ease of use, we utilized Mantine rather than all the other tools available
 
-- <ins>Bootstrap:</ins> Bootstrap is a CSS framework that heavily simplifies the design process of the website. In fact, Bootstrap provides us with many predefined CSS classes that can simply be applied to our site's elements which we don't have to code from beginning to end. This allows us to more easily style our website all the while keeping it responsive and efficient. As our goal in this team is to deliver the best possible product as fast as we're able, this framework will be of great help to us. As an example, with Bootstrap, we can easily make a navigation bar as compared to making it from start to finish with CSS.
-  As all of us on the team know CSS, we agreed that we would learn about Bootstrap since it'd enhance the design all the while being easier to use than CSS.
-
-### Backend
-
-- <ins>NodeJS:</ins> This framework allows us to run JavaScript on the server side, which we don't usually do when we normally use JavaScript. This is very importnat as this makes it possible to create a full-stack application, since we can work on back-end aspects using it. NodeJS will ease the communication between the server and the client, so it's often used.
-  Furthermore, a lot of us in the team were willing to learn this back-end JavaScript framework as we had previous experience with JavaScript and found it
-  to be potentially useful to know.
-
-- <ins>Django:</ins> Django is a web framework for Python, and it's very commonly used to make websites. Similarly to the others, it enhances efficiency as it provides many useful built-in components. Django, for example, simplifies the process of user authentification, which we will have in our site as each user will be able to create an account which they can connect to with a password and email. It can however also be used for frontend, but we won't in the context of our project as the front-end frameworks we currently have are good enough to complete it. The Django REST frameowrk is used to connect the back-end to the front-end React code for example using API endpoints, for which React will send HTTP requests in order to access.
-  Many of us also have knowledge in Python, and two of the team's members were currently learning this framework, so we also found it to be a good tool to use.
-
-<!--
-## List of questions:
-* How do we divide our files for the gitHub
-* The meeting minutes, how many times should we ideally meet a week
-* Is the info we put enough
--->
